@@ -14,7 +14,10 @@
 [Dd]ebug/
 [Dd]ebugPublic/
 [Rr]elease/
+![Rr]elease/
 [Rr]eleases/
+![Rr]eleases/
+!*.exe
 x64/
 x86/
 build/
