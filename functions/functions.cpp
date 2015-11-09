@@ -17,6 +17,9 @@ int getPerfectSquare();
 int getMultOfNum(int num);
 
 void main() {
+	double holdDbl;
+	int holdInt;
+	char holdCh;
 	double start, end;		// for part 5
 	int num;				// for part 7
 
@@ -30,11 +33,14 @@ void main() {
 
 		// print section description
 		cout
-		<< "Part 1 (get positive number - assume number is entered)\n"
-		<< "   **  write and use the getPos() function   **";
+			<< "Part 1 (get positive number - assume number is entered)\n"
+			<< "   **  write and use the getPos() function   **";
 
-		// print output with function call
-		cout << "\tGood! " << getPos() << " is positive!";
+		// get input
+		holdDbl = getPos();
+
+		// print output
+		cout << "\tGood! " << holdDbl << " is positive!";
 
 		// separator
 		cout << "\n\n~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\n\n";
@@ -43,11 +49,14 @@ void main() {
 
 		// print section description
 		cout
-		<< "Part 2 (get positive number - no assumption)\n"
-		<< "   **  write and use the getPosNum() function   **";
+			<< "Part 2 (get positive number - no assumption)\n"
+			<< "   **  write and use the getPosNum() function   **";
 
-		// print output with function call
-		cout << "\tGood! " << getPosNum() << " is positive!";
+		// get input
+		holdDbl = getPosNum();
+
+		// print output
+		cout << "\tGood! " << holdDbl << " is positive!";
 
 		// separator
 		cout << "\n\n~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\n\n";
@@ -55,12 +64,15 @@ void main() {
 		/////////////////////////////////////////// Part 3 ///////////////////////////////////////////
 
 		// print section description
-		cout
-		<< "Part 3 (get a multiple of 5)\n"
-		<< "   **  write and use getMultOfFive() function    **";
+		cout 
+			<< "Part 3 (get a multiple of 5)\n"
+			<< "   **  write and use getMultOfFive() function    **";
 
-		// print output with function call
-		cout << "\tGood! " << getMultOfFive() << " is a multiple of 5!";
+		// get input
+		holdInt = getMultOfFive();
+
+		// print output
+		cout << "\tGood! " << holdInt << " is a multiple of 5!";
 
 		// separator
 		cout << "\n\n~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\n\n";
@@ -72,8 +84,11 @@ void main() {
 			<< "Part 4 (get a letter)\n"
 			<< "   **  write and use the getLetter() function  **";
 
-		// print output with function call
-		cout << "\tGood! " << getLetter() << " is a letter!";
+		// get input
+		holdCh = getLetter();
+
+		// print output
+		cout << "\tGood! " << holdCh << " is a letter!";
 
 		// separator
 		cout << "\n\n~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\n\n"; 
@@ -90,8 +105,10 @@ void main() {
 		start = getNum();
 		cout << "What is the ending point? ";
 		end = getNum();
+		
 
-		// print output with function call
+
+		// print output
 		cout << "\tGood! " << getInRange(start, end) << " is in [" << start << ", " << end << "]";
 
 		// separator
@@ -104,7 +121,7 @@ void main() {
 		<< "Part 6 (get a perfect square)\n"
 		<< "   **  write and use getPerfectSquare() function   **";
 
-		// print output with function call
+		// print output
 		cout << "\tGood! " << getPerfectSquare() << " is a perfect square!";
 
 		// separator
@@ -121,7 +138,7 @@ void main() {
 		cout << "\nWhat number do you want to get a multiple of? ";
 		num = getInt();
 
-		// print output with function call
+		// print output
 		cout << "        Good! " << getMultOfNum(num) << " is a multiple of " << num << "!";
 
 		// separator
