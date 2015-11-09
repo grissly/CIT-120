@@ -47,11 +47,17 @@ with the following syntax: <elementDataType> <arrayName>[SIZE]; the size MUST be
 literal or a constant integer variable. The style convention is to use a const int.
 
 Since my loop variant served as my counter, I had no need to run code in my loop body. I learned 
-that for loops can be useful even with an empy body.
+that for loops can be useful even with an empty body.
+
+how to do empty body, for loop
 
 I do not believe I have used constant variables in any of my previous labs. Constant variables 
 do not change during runtime (ie no value can be asigned to the variable after its declaration), 
 however they can be changed by the programmer before compile. This can be extremely useful for 
 making code more maintainable (just name a value that is used for math, formatting, sizes, etc; 
 if that value needs to be changed later, just change the initialization).
+
+talk about null (\0)
+current use is best for java too
+
 */

@@ -45,4 +45,6 @@ This lab was a bit tricky. I wasn't sure if I should use nested loops or if stat
 By applying the principle of common code outside the if statement, I was able to see the correct aproach.
 I use a conditional operator to determine if I needed to make space for a new column or preoceed to a new line
 (I then passed the appropriate escape sequence to the cout object to the desired spacing).
+
+constructed number myself
 */

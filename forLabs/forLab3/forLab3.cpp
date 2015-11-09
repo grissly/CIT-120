@@ -62,4 +62,7 @@ the code muddled and ineffectual. In this lab, the nature of the problem and the
 aproach to a solution requires a flag defaulting to true: the process of testing if a number is
 prime involves assuming that it is prime until you can eliminate all potential factors as
 actual factors; also, the loop condition needs a true value to continue the loop.
+
+flag naming convention
+using flag to break out
 */

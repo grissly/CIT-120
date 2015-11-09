@@ -56,4 +56,6 @@ void main() {
 
 /*
 This lab didn't present any new challenges. I just used everything I have learned form other labs.
+
+accumulator, reset each iteration
 */
