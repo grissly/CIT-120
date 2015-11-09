@@ -47,14 +47,14 @@ void main() {
 		}
 
 		// processing
-		start += start != int(start);		// ceil function
-		start += int(start) % 2 == 0;		// if start is odd, use it, if not increment by one
+		start = ceil(start);				// ceil function
+		start += (int(start) % 2 == 0 ? 1 : 0);		// if start is odd, use it, if not increment by one
 		for (int i = start; i <= end; i += 2) {
 			cout << i << " ";
 		}
 
 		// separator
-		cout << "\n\n~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\n\n";
+		cout << "\n~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\n";
 	}
 }
 
