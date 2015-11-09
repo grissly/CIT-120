@@ -18,6 +18,7 @@
 [Rr]eleases/
 ![Rr]eleases/
 !*.exe
+*.tlog/
 x64/
 x86/
 build/
