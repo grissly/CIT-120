@@ -17,11 +17,9 @@ int getPerfectSquare();
 int getMultOfNum(int num);
 
 void main() {
-	double holdDbl;
-	int holdInt;
-	char holdCh;
-	double start, end;		// for part 5
-	int num;				// for part 7
+	double holdDbl, start, end;			// start and end for part 5
+	int holdInt, num;					// num for part 7
+	char holdCh;				
 
 	// print title
 	cout
@@ -100,16 +98,15 @@ void main() {
 			<< "Part 5 (get a number between [start, end])\n"
 			<< "   **  write and use getInRange(start, end) function   **";
 
-		// get input for function arguments
+		// get input
 		cout << "\nWhat is the starting point? ";
 		start = getNum();
 		cout << "What is the ending point? ";
 		end = getNum();
-		
-
+		holdDbl = getInRange(start, end);
 
 		// print output
-		cout << "\tGood! " << getInRange(start, end) << " is in [" << start << ", " << end << "]";
+		cout << "\tGood! " << holdDbl << " is in [" << start << ", " << end << "]";
 
 		// separator
 		cout << "\n\n~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\n\n"; 
@@ -121,8 +118,11 @@ void main() {
 		<< "Part 6 (get a perfect square)\n"
 		<< "   **  write and use getPerfectSquare() function   **";
 
+		// get input
+		holdInt = getPerfectSquare();
+
 		// print output
-		cout << "\tGood! " << getPerfectSquare() << " is a perfect square!";
+		cout << "\tGood! " << holdInt << " is a perfect square!";
 
 		// separator
 		cout << "\n\n~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\n\n";
@@ -134,12 +134,17 @@ void main() {
 		<< "Part 7 (get a multiple of n)\n"
 		<< "   **  write and use getMultOfNum(int) function    **";
 
-		// get input for function arguments
+		// get input
 		cout << "\nWhat number do you want to get a multiple of? ";
 		num = getInt();
+		while (num == 0) {
+			cout << "Please enter a non-zero integer: ";
+			num = getInt();
+		}
+		holdInt = getMultOfNum(num);
 
 		// print output
-		cout << "        Good! " << getMultOfNum(num) << " is a multiple of " << num << "!";
+		cout << "        Good! " << holdInt << " is a multiple of " << num << "!";
 
 		// separator
 		cout << "\n\n~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\n\n";
@@ -238,7 +243,7 @@ char getLetter() {
 
 	// test input
 	while (c < 'A' || c >'Z' && c < 'a' || c > 'z') {
-		cout << "Please enter a letter: ";
+		cout << c << " is NOT a letter. Try again: ";
 		cin >> c;		cin.ignore(80, '\n');
 	}
 
@@ -303,7 +308,5 @@ int getMultOfNum(int num) {
 	// return input
 	return x;
 }
-
-
 
 /* WHAT I LEARNED */
