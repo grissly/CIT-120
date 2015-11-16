@@ -1,11 +1,13 @@
 // This program demonstrates use of functions	
 // Title: functions
 // Programmer: J. Guerra
-// Last Modified: Nov 6, 2015
+// Last Modified: Nov 16, 2015
 
 #include <iostream>
 using namespace std;
 
+//  prototypes DONE
+void printTitle();		// not required for lab. helper function
 double getNum();		// not required for lab. helper function
 int getInt();			// not required for lab. helper function
 double getPos();
@@ -22,9 +24,7 @@ void main() {
 	char holdCh;				
 
 	// print title
-	cout
-		<< "\n\t This program demonstrates how to use functions "
-		<< "\n\t                  by J. Guerra                  " << endl << endl;
+	printTitle();
 
 	while (true) {
 		/////////////////////////////////////////// Part 1 ///////////////////////////////////////////
@@ -35,6 +35,7 @@ void main() {
 			<< "   **  write and use the getPos() function   **";
 
 		// get input
+		cout << "\nEnter a number: ";
 		holdDbl = getPos();
 
 		// print output
@@ -51,6 +52,7 @@ void main() {
 			<< "   **  write and use the getPosNum() function   **";
 
 		// get input
+		cout << "\nEnter a number: ";
 		holdDbl = getPosNum();
 
 		// print output
@@ -67,6 +69,7 @@ void main() {
 			<< "   **  write and use getMultOfFive() function    **";
 
 		// get input
+		cout << "\nEnter a multiple of 5: ";
 		holdInt = getMultOfFive();
 
 		// print output
@@ -83,6 +86,7 @@ void main() {
 			<< "   **  write and use the getLetter() function  **";
 
 		// get input
+		cout << "\nEnter a letter: ";
 		holdCh = getLetter();
 
 		// print output
@@ -103,6 +107,7 @@ void main() {
 		start = getNum();
 		cout << "What is the ending point? ";
 		end = getNum();
+		cout << "\nEnter a number in the range[" << start << ", " << end << "]: ";
 		holdDbl = getInRange(start, end);
 
 		// print output
@@ -119,6 +124,7 @@ void main() {
 		<< "   **  write and use getPerfectSquare() function   **";
 
 		// get input
+		cout << "\nEnter a perfect square: ";
 		holdInt = getPerfectSquare();
 
 		// print output
@@ -141,6 +147,7 @@ void main() {
 			cout << "Please enter a non-zero integer: ";
 			num = getInt();
 		}
+		cout << "\nEnter a multiple of " << num << ": ";
 		holdInt = getMultOfNum(num);
 
 		// print output
@@ -149,6 +156,14 @@ void main() {
 		// separator
 		cout << "\n\n~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\n\n";
 	}
+}
+
+void printTitle() {
+	cout
+	<< "\n\t This program demonstrates how to use functions "
+	<< "\n\t                  by J. Guerra                  " << endl << endl;
+
+	return;
 }
 
 double getNum() {
@@ -177,14 +192,13 @@ int getInt() {
 	}
 
 	// return input
-	return x;
+	return int(x);
 }
 
 double getPos() {
 	double x;
 
 	// get input
-	cout << "\nEnter a number: ";
 	cin >> x;	cin.ignore(80, '\n');
 
 	// test input
@@ -201,7 +215,6 @@ double getPosNum() {
 	double x;
 
 	// get input
-	cout << "\nEnter a number: ";
 	x = getNum();
 
 	// test input
@@ -215,13 +228,9 @@ double getPosNum() {
 }
 
 int getMultOfFive() {
-	/* IDE may complain about returning double while function return type 
-	is int. Factors are only whole number values, thus validation will insure 
-	that implicit demotion will not change the value of returned number. */
 	double x;
 
 	// get input
-	cout << "\nEnter a multiple of 5: ";
 	x = getNum();
 
 	// test input
@@ -231,14 +240,13 @@ int getMultOfFive() {
 	}
 
 	// return input
-	return x;
+	return int(x);
 }
 
 char getLetter() {
 	char c;
 
 	// get input
-	cout << "\nEnter a letter: ";
 	cin >> c;		cin.ignore(80, '\n');
 
 	// test input
@@ -255,7 +263,6 @@ double getInRange(double start, double end) {
 	double x;
 
 	// get input
-	cout << "\nEnter a number in the range[" << start << ", " << end << "]: ";
 	x = getNum();
 
 	// test input
@@ -269,13 +276,10 @@ double getInRange(double start, double end) {
 }
 
 int getPerfectSquare() {
-	/* IDE may complain about returning double while function return type is int. 
-	Perfect squares are only whole number values, thus validation will insure
-	that implicit demotion will not change the value of returned number. */
 	double x;
 
 	// get input
-	cout << "\nEnter a perfect square: ";		x = getNum();
+	x = getNum();
 	
 	// test input
 	while (x < 1 || sqrt(x) != int(sqrt(x))) {
@@ -286,17 +290,13 @@ int getPerfectSquare() {
 	}
 
 	// return input
-	return x;
+	return int(x);
 }
 
 int getMultOfNum(int num) {
-	/* IDE may complain about returning double while function return type
-	is int. Factors are only whole number values, thus validation will insure
-	that implicit demotion will not change the value of returned number. */
 	double x;
 
 	// get input
-	cout << "\nEnter a multiple of " << num << ": ";
 	x = getNum();
 
 	// test input
@@ -306,7 +306,7 @@ int getMultOfNum(int num) {
 	}
 
 	// return input
-	return x;
+	return int(x);
 }
 
 /* WHAT I LEARNED */
