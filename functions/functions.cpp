@@ -7,9 +7,10 @@
 using namespace std;
 
 //  prototypes DONE
-void printTitle();		// not required for lab. helper function
-double getNum();		// not required for lab. helper function
-int getInt();			// not required for lab. helper function
+void printTitle();		
+double getNum();		
+int getInt();			
+int getNonZeroInt();	
 double getPos();
 double getPosNum();
 int getMultOfFive();
@@ -27,7 +28,7 @@ void main() {
 	printTitle();
 
 	while (true) {
-		/////////////////////////////////////////// Part 1 ///////////////////////////////////////////
+		////////////////////      Part 1      ////////////////////       DONE
 
 		// print section description
 		cout
@@ -39,12 +40,11 @@ void main() {
 		holdDbl = getPos();
 
 		// print output
-		cout << "\tGood! " << holdDbl << " is positive!";
+		cout 
+			<< "\tGood! " << holdDbl << " is positive!"
+			<< "\n\n~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\n\n";
 
-		// separator
-		cout << "\n\n~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\n\n";
-
-		/////////////////////////////////////////// Part 2 ///////////////////////////////////////////
+		////////////////////      Part 2      ////////////////////       DONE
 
 		// print section description
 		cout
@@ -56,12 +56,11 @@ void main() {
 		holdDbl = getPosNum();
 
 		// print output
-		cout << "\tGood! " << holdDbl << " is positive!";
+		cout 
+			<< "\tGood! " << holdDbl << " is positive!"
+			<< "\n\n~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\n\n";
 
-		// separator
-		cout << "\n\n~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\n\n";
-
-		/////////////////////////////////////////// Part 3 ///////////////////////////////////////////
+		////////////////////      Part 3      ////////////////////       DONE
 
 		// print section description
 		cout 
@@ -73,12 +72,11 @@ void main() {
 		holdInt = getMultOfFive();
 
 		// print output
-		cout << "\tGood! " << holdInt << " is a multiple of 5!";
+		cout 
+			<< "\tGood! " << holdInt << " is a multiple of 5!"
+			<< "\n\n~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\n\n";
 
-		// separator
-		cout << "\n\n~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\n\n";
-
-		/////////////////////////////////////////// Part 4 ///////////////////////////////////////////
+		////////////////////      Part 4      ////////////////////       DONE
 
 		// print section description
 		cout
@@ -90,12 +88,11 @@ void main() {
 		holdCh = getLetter();
 
 		// print output
-		cout << "\tGood! " << holdCh << " is a letter!";
+		cout 
+			<< "\tGood! " << holdCh << " is a letter!"
+			<< "\n\n~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\n\n";
 
-		// separator
-		cout << "\n\n~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\n\n"; 
-
-		/////////////////////////////////////////// Part 5 ///////////////////////////////////////////
+		////////////////////      Part 5      ////////////////////       DONE
 
 		// print section description
 		cout
@@ -111,201 +108,166 @@ void main() {
 		holdDbl = getInRange(start, end);
 
 		// print output
-		cout << "\tGood! " << holdDbl << " is in [" << start << ", " << end << "]";
+		cout 
+			<< "\tGood! " << holdDbl << " is in [" << start << ", " << end << "]"
+			<< "\n\n~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\n\n";
 
-		// separator
-		cout << "\n\n~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\n\n"; 
-
-		/////////////////////////////////////////// Part 6 ///////////////////////////////////////////
+		////////////////////      Part 6      ////////////////////       DONE
 
 		// print section description
 		cout
-		<< "Part 6 (get a perfect square)\n"
-		<< "   **  write and use getPerfectSquare() function   **";
+			<< "Part 6 (get a perfect square)\n"
+			<< "   **  write and use getPerfectSquare() function   **";
 
 		// get input
 		cout << "\nEnter a perfect square: ";
 		holdInt = getPerfectSquare();
 
 		// print output
-		cout << "\tGood! " << holdInt << " is a perfect square!";
+		cout 
+			<< "\tGood! " << holdInt << " is a perfect square!"
+			<< "\n\n~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\n\n";
 
-		// separator
-		cout << "\n\n~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\n\n";
-
-		/////////////////////////////////////////// Part 7 ///////////////////////////////////////////
+		////////////////////      Part 7      ////////////////////       DONE
 
 		// print section description
 		cout
-		<< "Part 7 (get a multiple of n)\n"
-		<< "   **  write and use getMultOfNum(int) function    **";
+			<< "Part 7 (get a multiple of n)\n"
+			<< "   **  write and use getMultOfNum(int) function    **";
 
 		// get input
 		cout << "\nWhat number do you want to get a multiple of? ";
-		num = getInt();
-		while (num == 0) {
-			cout << "Please enter a non-zero integer: ";
-			num = getInt();
-		}
+		num = getNonZeroInt();
 		cout << "\nEnter a multiple of " << num << ": ";
 		holdInt = getMultOfNum(num);
 
 		// print output
-		cout << "        Good! " << holdInt << " is a multiple of " << num << "!";
-
-		// separator
-		cout << "\n\n~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\n\n";
+		cout 
+			<< "        Good! " << holdInt << " is a multiple of " << num << "!"
+			<< "\n\n~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\n\n";
 	}
 }
 
-void printTitle() {
+void printTitle() {        //   DONE
 	cout
-	<< "\n\t This program demonstrates how to use functions "
-	<< "\n\t                  by J. Guerra                  " << endl << endl;
-
-	return;
+		<< "\n\t This program demonstrates how to use functions "
+		<< "\n\t                  by J. Guerra                  " << endl << endl;
 }
 
-double getNum() {
+double getNum() {       //   DONE
 	double x;
 
-	// get input
 	while (!(cin >> x)) {
 		cin.clear();	cin.ignore(30, '\n');
 		cout << "Please no letters. Try again: ";
-	}	cin.ignore(80, '\n');
+	}	
+	cin.ignore(80, '\n');
 
-	// return input
 	return x;
 }
 
-int getInt() {
-	double x;
+int getInt() {       //   DONE
+	double x = getNum();
 
-	// get input
-	x = getNum();
-
-	// test input
 	while (int(x) != x) {
 		cout << "Please enter an integer: ";
 		x = getNum();
 	}
-
-	// return input
+	
 	return int(x);
 }
 
-double getPos() {
+int getNonZeroInt() {	       //   DONE
+	int x = getInt();
+
+	while (x == 0) {
+		cout << "Please enter a non-zero integer: ";
+		x = getInt();
+	}
+
+	return x;
+}
+
+double getPos() {       //   DONE
 	double x;
 
-	// get input
 	cin >> x;	cin.ignore(80, '\n');
 
-	// test input
 	while (x < 0) {
 		cout << "Please enter a positive number: ";
 		cin >> x;	cin.ignore(80, '\n');
 	}
 
-	// return input
 	return x;
 }
 
-double getPosNum() {
-	double x;
+double getPosNum() {       //   DONE
+	double x = getNum();
 
-	// get input
-	x = getNum();
-
-	// test input
 	while (x < 0) {
 		cout << "Please enter a positive number: ";
 		x = getNum();
 	}
 
-	// return input
 	return x;
 }
 
-int getMultOfFive() {
-	double x;
+int getMultOfFive() {       //   DONE
+	double x = getNum();
 
-	// get input
-	x = getNum();
-
-	// test input
 	while (x != int(x) || int(x) % 5 != 0) {
 		cout << "Please enter a multiple of 5: ";
 		x = getNum();
 	}
-
-	// return input
+	
 	return int(x);
 }
 
-char getLetter() {
+char getLetter() {       //   DONE
 	char c;
 
-	// get input
 	cin >> c;		cin.ignore(80, '\n');
 
-	// test input
 	while (c < 'A' || c >'Z' && c < 'a' || c > 'z') {
 		cout << c << " is NOT a letter. Try again: ";
 		cin >> c;		cin.ignore(80, '\n');
 	}
 
-	// return input
 	return c;
 }
 
-double getInRange(double start, double end) {
-	double x;
+double getInRange(double start, double end) {       //   DONE
+	double x = getNum();
 
-	// get input
-	x = getNum();
-
-	// test input
 	while (x < start || x > end) {
 		cout << x << " is NOT in the range [" << start << ", " << end << "]. Try again: ";
 		x = getNum();
 	}
 
-	// return input
 	return x;
 }
 
-int getPerfectSquare() {
-	double x;
-
-	// get input
-	x = getNum();
+int getPerfectSquare() {       //   DONE
+	double x = getNum();
 	
-	// test input
-	while (x < 1 || sqrt(x) != int(sqrt(x))) {
+	while (x < 0 || sqrt(x) != int(sqrt(x))) {
 		cout
-			<< (x < 1 ? "Perfect squares cannot be less than 1 \nTherefore, " : "" )
+			<< (x < 0 ? "Perfect squares cannot be less than 0 \nTherefore, " : "" )
 			<< x << " is NOT a perfect square. Try again: ";
 		x = getNum();
 	}
 
-	// return input
 	return int(x);
 }
 
-int getMultOfNum(int num) {
-	double x;
+int getMultOfNum(int num) {       //   DONE
+	double x = getNum();
 
-	// get input
-	x = getNum();
-
-	// test input
 	while (x != int(x) || int(x) % num != 0) {
 		cout << "Please enter a multiple of " << num << ": ";
 		x = getNum();
 	}
 
-	// return input
 	return int(x);
 }
 
