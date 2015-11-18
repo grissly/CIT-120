@@ -78,6 +78,9 @@
   <ItemGroup>
     <ClCompile Include="readFromFile.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="pickme.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

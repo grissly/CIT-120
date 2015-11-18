@@ -1,7 +1,7 @@
-//
-//
-//
-//
+// This program reads two ints from file and returns average
+// filename: readFromFile
+// Programmer: J. Guerra
+// Last Modified: Nov 17, 2015
 
 #include <iostream>
 #include <string>
@@ -10,7 +10,7 @@ using namespace std;
 
 void main() {
 	string input;
-	double a, b;
+	int a, b;
 	ifstream file;
 
 	// title block
@@ -22,18 +22,23 @@ void main() {
 
 	// prompt for file
 	cout << "What file contains your data? ";
-	cin >> input;		cin.ignore(50, '\n');
+	getline(cin, input);
+
 	file.open(input);
 
-	if (!file) {			// check if file is good
-		system("color 98"); // background 9 = light blue, text 8 = gray
+	if (!file) {				// check if file is good
+		system("color 98");		// background 9 = light blue, text 8 = gray
 		cout << "\aFailed to open file: \"" << input << "\". Exiting the program.\n\n";
-	} 
-	else {					// get and print average
-		file >> a >> b;
-		cout << "The average of " << a << " and " << b << " is: " << (a + b) / 2 << ".\n\n";
-		file.close();
+		
+		system("pause");
+		exit(0);
 	}
 	
+	file >> a >> b;
+	
+	cout << "The average of " << a << " and " << b << " is: " << (a + b) / 2.0 << ".\n\n";
+	
+	file.close();
+
 	system("pause");
 }
