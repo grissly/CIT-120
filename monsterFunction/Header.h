@@ -45,3 +45,11 @@ void printASCII(int x);
 //					Prints error for input out of range
 //					Clears keyboard buffer
 int getIntInRange(int start, int end);
+
+//  Pre Condition:	start must be less than or equal to end
+// Post Condition:	Returns a valid number in range [start, end]
+//					Prints error for inappropraite charater
+//					Prints descriptive error for input < or > range
+//					Prints error for input out of range
+//					Clears keyboard buffer
+double getNumInRange(double start, double end);
