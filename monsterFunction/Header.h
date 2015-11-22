@@ -7,6 +7,12 @@ void printTitle();
 void printMenu();
 
 //  Pre Condition:  NONE
+// Post Condition:  Returns a valid letter character
+//					Prints error for inapropriate characters
+//					Clears the keyboard buffer
+char getLetter();
+
+//  Pre Condition:  NONE
 // Post Condition:	Returns a valid number
 //					Prints error if letter or symbol is entered
 //					Clears keyboard buffer

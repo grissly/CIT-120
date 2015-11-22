@@ -25,6 +25,18 @@ void printMenu() {
 		<< "\t 8] End the program\n\n";
 }
 
+char getLetter() {
+	char c;
+	cin >> c;		cin.ignore(80, '\n');
+
+	while (c < 'A' || c >'Z' && c < 'a' || c > 'z') {
+		cout << "\t'" << c << "' is NOT a letter! \n\tPlease enter a letter: ";
+		cin >> c;		cin.ignore(80, '\n');
+	}
+
+	return c;
+}
+
 double getNum() {
 	double x;
 

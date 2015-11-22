@@ -5,15 +5,14 @@
 // Last Modified: Nov 19, 2015
 
 #include <iostream>
-#include <iomanip>
 #include "Header.h"
 using namespace std;
 
-
 void main() {
 	double start, end, x;		// for case 2
-	int cpl,					// characters per line. for case 7
-		y, z;					// for case 6
+	char c;						// for case 3
+	int y, z,					// for case 6
+		cpl;					// characters per line. for case 7
 	system("color 2f");			// console fun :D | 2 = green background, f = white text
 
 	while (true) {
@@ -23,7 +22,7 @@ void main() {
 		// menu
 		cout << "Please enter your choice: ";
 		switch (getIntInRange(1, 8)) {
-			case 2:
+			case 2:				////////	Option 2 (Get Number In Range)	////////
 				cout << "\nStart?: ";
 				start = getNum();
 				cout << "End?: ";
@@ -35,7 +34,15 @@ void main() {
 
 				break;
 
-			case 6:
+			case 3:				////////	Option 3 (Get Letter)			////////
+				cout << "\nPlease enter a letter of the alphabet: ";
+				c = getLetter();
+
+				cout << "Your letter is " << c << endl;
+
+				break;
+
+			case 6:				////////	Option 6 (Classify Number)		////////
 				cout << "\nPlease enter a number: ";
 				y = getPosInt();
 				z = classifyInt(y);
@@ -44,13 +51,13 @@ void main() {
 
 				break;
 			
-			case 7:
+			case 7:				////////	Option 7 (Print ASCII Table) 	////////
 				cout << "\nHow many characters would you like to print per line? [1, 4]: ";
 				cpl = getIntInRange(1, 4);
 				printASCII(cpl);
 				break;
 			
-			case 8:
+			case 8:				////////	Option 8 (Close Program)		////////
 			default:
 				cout << "\nThank you for using my program.\n\n";
 				system("pause");
