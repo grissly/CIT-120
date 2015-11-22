@@ -19,6 +19,25 @@ double getNum();
 //					Clears keyboard buffer
 int getInt();
 
+//  Pre Condition:	NONE
+// Post Condition:	Returns a valid positive integer
+//					Prints error if letter or symbol is entered
+//					Prints error for non-integer number
+//					Prints error for non-positive integer
+//					Clears keyboard buffer
+int getPosInt();
+
+//  Pre Condition:	x must be a positive integer
+// Post Condition:	classifies number and returns an integer code:
+//					-1 means number is deficient (number is less than sum of its factors)
+//					0 means number is perfect (number is equal to sum of its factors)
+//					1 means number is abundant (number is more than sum of its factors)
+int classifyInt(int x);
+
+//  Pre Condition:	x must be an integer on range [1, 4]
+// Post Condition:	Prints ASCII Table
+void printASCII(int x);
+
 //  Pre Condition:	start must be less than or equal to end
 // Post Condition:	Returns a valid integer in range [start, end]
 //					Prints error for inappropraite charater

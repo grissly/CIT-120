@@ -1,4 +1,6 @@
 #include <iostream>
+#include <iomanip>
+#include "Header.h"
 using namespace std;
 
 void printTitle() {
@@ -44,6 +46,46 @@ int getInt() {
 	}
 
 	return int(x);
+}
+
+int getPosInt() {
+	int x = getInt();
+
+	while (x < 1) {
+		cout << "Please enter an integer bigger than 0: ";
+		x = getInt();
+	}
+
+	return x;
+}
+
+int classifyInt(int x) {
+	int total = 0;
+
+	for (int i = 1; i < x; i++)
+		total += (x % i == 0 ? i : 0);
+
+	return (total > x ? 1 : total < x ? -1 : 0);
+}
+
+void printASCII(int x) {
+	int const WIDTH_ONE = 4, WIDTH_TWO = 7;
+
+	for (int i = 0; i < 256; i++) {
+		cout << setw(WIDTH_ONE) << i << setw(WIDTH_TWO);
+		switch (i) {
+			case 0: cout << "NULL";		break;
+			case 7: cout << "\\a";		break;
+			case 8: cout << "\\b";		break;
+			case 9: cout << "\\t";		break;
+			case 10: cout << "\\n";		break;
+			case 11: cout << "\\v";		break;
+			case 13: cout << "\\r";		break;
+			default: cout << char(i);
+		}
+		cout << (i % x == 3 ? "\n" : "   ||  ");
+	}
+	cout << "\n\n";
 }
 
 int getIntInRange(int start, int end) {
