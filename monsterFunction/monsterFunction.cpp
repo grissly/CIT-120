@@ -1,5 +1,5 @@
 // This program demonstrates the structure of a larger project with
-//     switch case menu and focus on function reusability 
+//     switch case menu, focus on function reusability, and "slave" functions 
 // Title: monsterFunctions
 // Programmer: J. Guerra
 // Last Modified: Nov 19, 2015
@@ -9,10 +9,16 @@
 using namespace std;
 
 void main() {
-	double start, end, x;		// for case 2
-	char c;						// for case 3
-	int y, z,					// for case 6
-		cpl;					// characters per line. for case 7
+	double
+		x,						// for receiving double as input
+		start, end;				// for option 2
+	char 
+		c;						// for receiving character as input
+	int 
+		y,						// for receiving int as input
+		z,						// for receiving code from classifyInt()
+		cpl;					// characters per line. for option 7
+
 	system("color 2f");			// console fun :D | 2 = green background, f = white text
 
 	while (true) {
@@ -21,9 +27,12 @@ void main() {
 
 		// menu
 		cout << "Please enter your choice: ";
-		switch (getIntInRange(1, 8)) {
+		y = getIntInRange(1, 8);
+
+		cout << endl;
+		switch (y) {
 			case 2:				////////	Option 2 (Get Number In Range)	////////
-				cout << "\nStart?: ";
+				cout << "Start?: ";
 				start = getNum();
 				cout << "End?: ";
 				end = getNum();
@@ -35,16 +44,33 @@ void main() {
 				break;
 
 			case 3:				////////	Option 3 (Get Letter)			////////
-				cout << "\nPlease enter a letter of the alphabet: ";
+				cout << "Please enter a letter of the alphabet: ";
 				c = getLetter();
 
 				cout << "Your letter is " << c << endl;
 
 				break;
 
+			case 4:				////////	Option 4 (Get Integer)			////////
+				cout << "Please enter an integer: ";
+				y = getInt();
+
+				cout << "Your number is " << y << endl;
+
+				break;
+
+			case 5:				////////	Option 5 (Get Prime)			////////
+				cout << "Please enter a prime number: ";
+				y = getPrime();
+
+				cout << y << " is prime" << endl;
+
+				break;
+
 			case 6:				////////	Option 6 (Classify Number)		////////
-				cout << "\nPlease enter a number: ";
+				cout << "Please enter a number: ";
 				y = getPosInt();
+
 				z = classifyInt(y);
 
 				cout << y << " is " << (z == -1 ? "deficient" : z == 1 ? "abundant" : "perfect") << endl;
@@ -52,20 +78,22 @@ void main() {
 				break;
 			
 			case 7:				////////	Option 7 (Print ASCII Table) 	////////
-				cout << "\nHow many characters would you like to print per line? [1, 4]: ";
+				cout << "How many characters would you like to print per line? [1, 4]: ";
 				cpl = getIntInRange(1, 4);
+
 				printASCII(cpl);
+
 				break;
 			
 			case 8:				////////	Option 8 (Close Program)		////////
 			default:
-				cout << "\nThank you for using my program.\n\n";
+				cout << "Thank you for using my program." << endl << endl;
 				system("pause");
 				exit(0);
 		}
 
 		// Wash. Rinse. Repeat.
-		cout << "\n";
+		cout << endl;
 		system("pause");
 		system("cls");
 	}

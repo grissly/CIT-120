@@ -59,3 +59,9 @@ int getIntInRange(int start, int end);
 //					Prints error for input out of range
 //					Clears keyboard buffer
 double getNumInRange(double start, double end);
+
+int getPrime();
+
+bool isPrime(int x);
+
+int getIntMoreThan(int n);

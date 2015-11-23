@@ -131,3 +131,35 @@ void printASCII(int x) {
 	}
 	cout << "\n\n";
 }
+
+int getPrime() {
+	int x = getIntMoreThan(2);
+
+	while (!isPrime(x)) {
+		cout << x << " is not prime. Try again: ";
+		x = getIntMoreThan(2);
+	}
+
+	return x;
+}
+
+bool isPrime(int x){
+	bool flag = true;
+
+	for (int i = 2; i * i <= x && flag; i++)
+		if (x % i == 0)
+			flag = false;
+
+	return flag;
+}
+
+int getIntMoreThan(int n) {
+	int x = getInt();
+
+	while (x <= n) {
+		cout << "\tPlease enter an integer bigger than 1: ";
+		x = getInt();
+	}
+
+	return x;
+}
