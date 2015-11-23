@@ -147,8 +147,7 @@ bool isPrime(int x){
 	bool flag = true;
 
 	for (int i = 2; i * i <= x && flag; i++)
-		if (x % i == 0)
-			flag = false;
+		flag = bool(x % i);
 
 	return flag;
 }
