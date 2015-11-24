@@ -7,6 +7,15 @@ void reorder(int &x, int &y, int &z);
 
 void main() {
 	int x, y, z;
+	int const TEST = 6, ARG = 3;
+	int testSuite[TEST][ARG] = {
+		{ 1, 2, 3 },
+		{ 1, 3, 2 },
+		{ 2, 1, 3 },
+		{ 2, 3, 1 },
+		{ 3, 1, 2 },
+		{ 3, 2, 1 }
+	};
 
 	printTitle();
 
@@ -95,6 +104,23 @@ void main() {
 		<< endl << x << y << z << endl << endl;
 
 	////////////////////////////////////////////////////////////////////////
+
+	system("pause");
+
+	cout << "\n\n\tBETTER way to test (using for loop and table format)\n\n";
+
+	cout
+		<< "\tx       y       z    " << endl
+		<< "\t=====================" << endl;
+	for (int i = 0; i < TEST; i++) {
+		x = testSuite[i][0];
+		y = testSuite[i][1];
+		z = testSuite[i][2];
+
+		cout << "Start:\t" << x << '\t' << y << '\t' << z << "\n";
+		reorder(x, y, z);
+		cout << "End:  \t" << x << '\t' << y << '\t' << z << "\n\n";
+	}
 
 	system("pause");
 }
