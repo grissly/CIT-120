@@ -18,13 +18,5 @@
     <ClCompile Include="swap.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="myFunctions.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="myHead.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>
