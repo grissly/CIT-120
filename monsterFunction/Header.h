@@ -44,6 +44,12 @@ int classifyInt(int x);
 // Post Condition:	Prints ASCII Table
 void printASCII(int x);
 
+//  Pre-Condition:	NONE
+// Post-Condition:	reads input from user
+//					keeps reading inputs until sentinal (negative number) received
+//					returns average of inputed numbers
+double getAvg();
+
 //  Pre Condition:	start must be less than or equal to end
 // Post Condition:	Returns a valid integer in range [start, end]
 //					Prints error for inappropraite charater

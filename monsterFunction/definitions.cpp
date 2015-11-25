@@ -71,6 +71,31 @@ int getPosInt() {
 	return x;
 }
 
+double getAvg() {
+	double total = 0;
+	int count = 0, x = 0;
+
+	while (x >= 0) {
+		count++;
+		total += x;
+
+		cout
+			<< "Please enter the " << count
+			<< (count % 10 == 1 && count % 100 != 11 ? "st" :
+			count % 10 == 2 && count % 100 != 12 ? "nd" :
+			count % 10 == 3 && count % 100 != 13 ? "rd" : "th")
+			<< " number: ";
+		x = getInt();
+	}
+
+	if (count == 1) {
+		cout << "There is no data to find the average of\n\n\n";
+		return -1.0;
+	}
+	else
+		return total / (count - 1);
+}
+
 double getNumInRange(double start, double end) {
 	double x = getNum();
 
@@ -144,12 +169,11 @@ int getPrime() {
 }
 
 bool isPrime(int x){
-	bool flag = true;
+	for (int i = 2; i * i <= x; i++) 
+		if (x % i == 0)
+			return false;
 
-	for (int i = 2; i * i <= x && flag; i++)
-		flag = bool(x % i);
-
-	return flag;
+	return true;
 }
 
 int getIntMoreThan(int n) {

@@ -8,12 +8,6 @@
 #include "Header.h"
 using namespace std;
 
-//  Pre-Condition:	NONE
-// Post-Condition:	reads input from user
-//					keeps reading inputs until sentinal (negative number) received
-//					returns average of inputed numbers
-double getAvg();
-
 void main() {
 	double
 		x,						// for receiving double as input
@@ -112,29 +106,4 @@ void main() {
 		system("pause");
 		system("cls");
 	}
-}
-
-double getAvg() {
-	double total = 0, x = 0;
-	int count = 0;
-
-	while (x >= 0) {
-		count++;
-		total += x;
-
-		cout
-			<< "Please enter the " << count 
-			<< (count % 10 == 1 && count != 11 ? "st" :
-				count % 10 == 2 && count != 12 ? "nd" :
-				count % 10 == 3 && count != 13 ? "rd" : "th")
-			<< " number: ";
-		x = getNum();
-	}
-
-	if (count == 1) {
-		cout << "There is no data to find the average of\n\n\n";
-		return -1.0;
-	}
-	else
-		return total / (count - 1);
 }
