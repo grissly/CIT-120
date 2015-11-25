@@ -1,13 +1,13 @@
 #include <iostream>
 using namespace std;
 
-void printTitle() {
+void printTitle() {        //   DONE
 	cout
 		<< "\n\t This program demonstrates how to use functions "
 		<< "\n\t                  by J. Guerra                  " << endl << endl;
 }
 
-double getNum() {
+double getNum() {        //   DONE
 	double x;
 
 	while (!(cin >> x)) {
@@ -19,7 +19,7 @@ double getNum() {
 	return x;
 }
 
-int getInt() {
+int getInt() {        //   DONE
 	double x = getNum();
 
 	while (int(x) != x) {
@@ -30,7 +30,7 @@ int getInt() {
 	return int(x);
 }
 
-int getNonZeroInt() {	       
+int getNonZeroInt() {	               //   DONE
 	int x = getInt();
 
 	while (x == 0) {
@@ -41,7 +41,7 @@ int getNonZeroInt() {
 	return x;
 }
 
-double getPos() {       
+double getPos() {               //   DONE
 	double x;
 
 	cin >> x;	cin.ignore(80, '\n');
@@ -54,7 +54,7 @@ double getPos() {
 	return x;
 }
 
-double getPosNum() {       
+double getPosNum() {               //   DONE
 	double x = getNum();
 
 	while (x <= 0) {
@@ -65,7 +65,7 @@ double getPosNum() {
 	return x;
 }
 
-int getMultOfFive() {       
+int getMultOfFive() {               //   DONE
 	double x = getNum();
 
 	while (x != int(x) || int(x) % 5 != 0) {
@@ -76,7 +76,7 @@ int getMultOfFive() {
 	return int(x);
 }
 
-char getLetter() {       
+char getLetter() {              //   DONE 
 	char c;
 
 	cin >> c;		cin.ignore(80, '\n');
@@ -90,7 +90,7 @@ char getLetter() {
 }
 
 double getInRange(double start, double end) {       
-	double x = getNum();
+	double x = getNum();        //   DONE
 
 	while (x < start || x > end) {
 		cout << x << " is NOT in the range [" << start << ", " << end << "]. Try again: ";
@@ -100,7 +100,7 @@ double getInRange(double start, double end) {
 	return x;
 }
 
-int getPerfectSquare() {       
+int getPerfectSquare() {               //   DONE
 	double x = getNum();
 
 	while (x < 0 || sqrt(x) != int(sqrt(x))) {
@@ -113,7 +113,7 @@ int getPerfectSquare() {
 	return int(x);
 }
 
-int getMultOfNum(int num) {       
+int getMultOfNum(int num) {             //   DONE  
 	double x = getNum();
 
 	while (x != int(x) || int(x) % num != 0) {

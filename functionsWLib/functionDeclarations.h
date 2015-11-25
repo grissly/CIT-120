@@ -3,74 +3,73 @@ using namespace std;
 
 //  Pre Condition: NONE
 // Post Condition: Prints the Title to the console
-void printTitle();
+void printTitle();         //   DONE
 
-//  Pre Condition: NONE
+//  Pre Condition:  NONE
 // Post Condition:	Returns a valid number
-//					Prints error if letter or symbol is entered
-//					Clears keyboard buffer
-double getNum();
+//					Prints descriptive error messages
+//					Removes everything from the cin buffer
+//                  Restores the cin object if needed
+double getNum();        //   DONE
 
 //  Pre Condition:	NONE
 // Post Condition:	Returns a valid Integer
-//					Prints error if letter or symbol is entered
-//					Prints error if non-integer number
-//					Clears keyboard buffer
-int getInt();
+//					Prints descriptive error messages
+//					Removes everything from the cin buffer
+//                  Restores the cin object if needed
+int getInt();        //   DONE
 
 //  Pre Condition:	NONE
 // Post Condition:	Returns a valid Non-Zero Integer
-//					Prints error if letter or symbol is entered
-//					Prints error if non-integer number
-//					Prints error if zero is entered
-//					Clears keyboard buffer
-int getNonZeroInt();
+//					Prints descriptive error messages
+//					Removes everything from the cin buffer
+//                  Restores the cin object if needed
+int getNonZeroInt();        //   DONE
 
 //  Pre Condition:	None
 // Post Condition:	Returns a valid positive number
 //					will crash program with non-numeric input
-//					Prints error if number less than or equal to zero
-//					Clears keyboard buffer
-double getPos();
+//					Prints descriptive error messages
+//					Removes everything from the cin buffer
+double getPos();        //   DONE
 
 //  Pre Condition:	None
 // Post Condition:	Returns a valid positive number
-//					Prints error if letter or symbol is entered
-//					Prints error if number less than or equal to zero
-//					Clears keyboard buffer
-double getPosNum();
+//					Prints descriptive error messages
+//					Removes everything from the cin buffer
+//                  Restores the cin object if needed
+double getPosNum();        //   DONE
 
 //  Pre Condition:	None
 // Post Condition:	Returns a valid multiple of 5
-//					Prints error if letter or symbol is entered
-//					Prints error if number is not a multiple of 5
-//					Clears keyboard buffer
-int getMultOfFive();
+//					Prints descriptive error messages
+//					Removes everything from the cin buffer
+//                  Restores the cin object if needed
+int getMultOfFive();        //   DONE
 
 //  Pre Condition:	None
 // Post Condition:	Returns a valid letter
-//					Prints error message with incorrect input
-//					Clears keyboard buffer
-char getLetter();
+//					Prints descriptive error messages
+//					Removes everything from the cin buffer
+char getLetter();        //   DONE
 
-//  Pre Condition:	start must be less than or equal to end
+//  Pre Condition:	start <= end
 // Post Condition:	Returns a valid number in range [start, end]
-//					Prints error if letter or symbol is entered
-//					Prints error for input out of range
-//					Clears keyboard buffer
-double getInRange(double start, double end);
+//					Prints descriptive error messages
+//					Removes everything from the cin buffer
+//                  Restores the cin object if needed
+double getInRange(double start, double end);        //   DONE
 
 //  Pre Condition:	NONE
-// Post Condition:	Returns a valid square
-//					Prints error if letter or symbol is entered
-//					Prints error if input is less than 1
-//					Prints error if input is not perfect square
-//					Clears keyboard buffer
-int getPerfectSquare();
+// Post Condition:	Returns a valid perfect square
+//					Prints descriptive error messages
+//					Removes everything from the cin buffer
+//                  Restores the cin object if needed
+int getPerfectSquare();        //   DONE
 
-//  Pre Condition:	num must be a non zero number
+//  Pre Condition:	num != 0
 // Post Condition:	Returns a valid multiple of num
-//					Prints error if letter or symbol is entered
-//					Prints error if number is not a multiple of num
-//					Clears keyboard buffer
-int getMultOfNum(int num);
+//					Prints descriptive error messages
+//					Removes everything from the cin buffer
+//                  Restores the cin object if needed
+int getMultOfNum(int num);        //   DONE
