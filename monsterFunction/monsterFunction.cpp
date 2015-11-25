@@ -8,13 +8,20 @@
 #include "Header.h"
 using namespace std;
 
+//  Pre-Condition:	NONE
+// Post-Condition:	reads input from user
+//					keeps reading inputs until sentinal (negative number) received
+//					returns average of inputed numbers
+double getAvg();
+
 void main() {
 	double
 		x,						// for receiving double as input
+		avg,					// for option 1
 		start, end;				// for option 2
-	char 
+	char
 		c;						// for receiving character as input
-	int 
+	int
 		y,						// for receiving int as input
 		z,						// for receiving code from classifyInt()
 		cpl;					// characters per line. for option 7
@@ -31,65 +38,73 @@ void main() {
 
 		cout << endl;
 		switch (y) {
-			case 2:				////////	Option 2 (Get Number In Range)	////////
-				cout << "Start?: ";
-				start = getNum();
-				cout << "End?: ";
-				end = getNum();
-				cout << "Please enter a number between " << start << " and " << end << ":";
-				x = getNumInRange(start, end);
+		case 1:				////////	Option 1 (Avg set of pos num)	////////
+			avg = getAvg();
 
-				cout << "Your number is " << x << endl;
+			if (avg >= 0)
+				cout << "The average of the numbers is " << avg << endl << endl;
 
-				break;
+			break;
 
-			case 3:				////////	Option 3 (Get Letter)			////////
-				cout << "Please enter a letter of the alphabet: ";
-				c = getLetter();
+		case 2:				////////	Option 2 (Get Number In Range)	////////
+			cout << "Start?: ";
+			start = getNum();
+			cout << "End?: ";
+			end = getNum();
+			cout << "Please enter a number between " << start << " and " << end << ":";
+			x = getNumInRange(start, end);
 
-				cout << "Your letter is " << c << endl;
+			cout << "Your number is " << x << endl;
 
-				break;
+			break;
 
-			case 4:				////////	Option 4 (Get Integer)			////////
-				cout << "Please enter an integer: ";
-				y = getInt();
+		case 3:				////////	Option 3 (Get Letter)			////////
+			cout << "Please enter a letter of the alphabet: ";
+			c = getLetter();
 
-				cout << "Your number is " << y << endl;
+			cout << "Your letter is " << c << endl;
 
-				break;
+			break;
 
-			case 5:				////////	Option 5 (Get Prime)			////////
-				cout << "Please enter a prime number: ";
-				y = getPrime();
+		case 4:				////////	Option 4 (Get Integer)			////////
+			cout << "Please enter an integer: ";
+			y = getInt();
 
-				cout << y << " is prime" << endl;
+			cout << "Your number is " << y << endl;
 
-				break;
+			break;
 
-			case 6:				////////	Option 6 (Classify Number)		////////
-				cout << "Please enter a number: ";
-				y = getPosInt();
+		case 5:				////////	Option 5 (Get Prime)			////////
+			cout << "Please enter a prime number: ";
+			y = getPrime();
 
-				z = classifyInt(y);
+			cout << y << " is prime" << endl;
 
-				cout << y << " is " << (z == -1 ? "deficient" : z == 1 ? "abundant" : "perfect") << endl;
+			break;
 
-				break;
-			
-			case 7:				////////	Option 7 (Print ASCII Table) 	////////
-				cout << "How many characters would you like to print per line? [1, 4]: ";
-				cpl = getIntInRange(1, 4);
+		case 6:				////////	Option 6 (Classify Number)		////////
+			cout << "Please enter a number: ";
+			y = getPosInt();
 
-				printASCII(cpl);
+			z = classifyInt(y);
 
-				break;
-			
-			case 8:				////////	Option 8 (Close Program)		////////
-			default:
-				cout << "Thank you for using my program." << endl << endl;
-				system("pause");
-				exit(0);
+			cout << y << " is " << (z == -1 ? "deficient" : z == 1 ? "abundant" : "perfect") << endl;
+
+			break;
+
+		case 7:				////////	Option 7 (Print ASCII Table) 	////////
+			cout << "How many characters would you like to print per line? [1, 4]: ";
+			cpl = getIntInRange(1, 4);
+
+			printASCII(cpl);
+
+			break;
+
+		case 8:				////////	Option 8 (Close Program)		////////
+		default:
+			cout << "Thank you for using my program." << endl << endl;
+			system("pause");
+			exit(0);
 		}
 
 		// Wash. Rinse. Repeat.
@@ -97,4 +112,29 @@ void main() {
 		system("pause");
 		system("cls");
 	}
+}
+
+double getAvg() {
+	double total = 0, x = 0;
+	int count = 0;
+
+	while (x >= 0) {
+		count++;
+		total += x;
+
+		cout
+			<< "Please enter the " << count 
+			<< (count % 10 == 1 && count != 11 ? "st" :
+				count % 10 == 2 && count != 12 ? "nd" :
+				count % 10 == 3 && count != 13 ? "rd" : "th")
+			<< " number: ";
+		x = getNum();
+	}
+
+	if (count == 1) {
+		cout << "There is no data to find the average of\n\n\n";
+		return -1.0;
+	}
+	else
+		return total / (count - 1);
 }
