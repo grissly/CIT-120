@@ -37,14 +37,17 @@ void main() {
 
 			if (avg >= 0)
 				cout << "The average of the numbers is " << avg << endl << endl;
+			else
+				cout << "There is no data to find the average of\n\n\n";
 
 			break;
 
-		case 2:				////////	Option 2 (Get Number In Range)	////////
+		case 2:				////////	Option 2 (Get Number In Range)	////////   DONE
 			cout << "Start?: ";
 			start = getNum();
 			cout << "End?: ";
 			end = getNum();
+
 			cout << "Please enter a number between " << start << " and " << end << ":";
 			x = getNumInRange(start, end);
 
@@ -52,7 +55,7 @@ void main() {
 
 			break;
 
-		case 3:				////////	Option 3 (Get Letter)			////////
+		case 3:				////////	Option 3 (Get Letter)			////////   DONE
 			cout << "Please enter a letter of the alphabet: ";
 			c = getLetter();
 
@@ -60,7 +63,7 @@ void main() {
 
 			break;
 
-		case 4:				////////	Option 4 (Get Integer)			////////
+		case 4:				////////	Option 4 (Get Integer)			////////   DONE
 			cout << "Please enter an integer: ";
 			y = getInt();
 
@@ -68,7 +71,7 @@ void main() {
 
 			break;
 
-		case 5:				////////	Option 5 (Get Prime)			////////
+		case 5:				////////	Option 5 (Get Prime)			////////   DONE
 			cout << "Please enter a prime number: ";
 			y = getPrime();
 
@@ -76,7 +79,7 @@ void main() {
 
 			break;
 
-		case 6:				////////	Option 6 (Classify Number)		////////
+		case 6:				////////	Option 6 (Classify Number)		////////   DONE
 			cout << "Please enter a number: ";
 			y = getPosInt();
 
@@ -86,7 +89,7 @@ void main() {
 
 			break;
 
-		case 7:				////////	Option 7 (Print ASCII Table) 	////////
+		case 7:				////////	Option 7 (Print ASCII Table) 	////////   DONE
 			cout << "How many characters would you like to print per line? [1, 4]: ";
 			cpl = getIntInRange(1, 4);
 
@@ -94,7 +97,7 @@ void main() {
 
 			break;
 
-		case 8:				////////	Option 8 (Close Program)		////////
+		case 8:				////////	Option 8 (Close Program)		////////   DONE
 		default:
 			cout << "Thank you for using my program." << endl << endl;
 			system("pause");
