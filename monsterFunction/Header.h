@@ -1,3 +1,6 @@
+#include <string>
+using namespace std;
+
 //  Pre Condition:  NONE
 // Post Condition:  Prints the Title to the console
 void printTitle();
@@ -6,31 +9,31 @@ void printTitle();
 // Post Condition:  Prints the Menu to the console
 void printMenu();
 
-//  Pre Condition:  NONE
-// Post Condition:  Returns a valid letter character
-//					Prints error for inapropriate characters
-//					Clears the keyboard buffer
+//  Pre Condition:	NONE
+// Post Condition:	Returns a valid letter character
+//					Prints descriptive error message
+//					Removes everything from the cin buffer
 char getLetter();
 
-//  Pre Condition:  NONE
+//  Pre Condition:	NONE
 // Post Condition:	Returns a valid number
-//					Prints error if letter or symbol is entered
-//					Clears keyboard buffer
-double getNum();
+//					Prints descriptive error message
+//					Removes everything from the cin buffer
+//					Restores the cin object if needed
+double getNum(); 
 
 //  Pre Condition:	NONE
 // Post Condition:	Returns a valid Integer
-//					Prints error if letter or symbol is entered
-//					Prints error if non-integer number
-//					Clears keyboard buffer
+//					Prints descriptive error message
+//					Removes everything from the cin buffer
+//					Restores the cin object if needed
 int getInt();
 
 //  Pre Condition:	NONE
 // Post Condition:	Returns a valid positive integer
-//					Prints error if letter or symbol is entered
-//					Prints error for non-integer number
-//					Prints error for non-positive integer
-//					Clears keyboard buffer
+//					Prints descriptive error message
+//					Removes everything from the cin buffer
+//					Restores the cin object if needed
 int getPosInt();
 
 //  Pre Condition:	x must be a positive integer
@@ -45,9 +48,12 @@ int classifyInt(int x);
 void printASCII(int x);
 
 //  Pre-Condition:	NONE
-// Post-Condition:	reads input from user
-//					keeps reading inputs until sentinal (negative number) received
+// Post-Condition:	reads integer input from user
+//					keeps reading inputs until sentinel (negative number) received
+//					-1.0 means there was no data to average
 //					returns average of inputed numbers
+//					Removes everything from the cin buffer
+//					Restores the cin object if needed
 double getAvg();
 
 //  Pre Condition:	start must be less than or equal to end
@@ -71,3 +77,5 @@ int getPrime();
 bool isPrime(int x);
 
 int getIntMoreThan(int n);
+
+string findOrdinalSuffix(int count);

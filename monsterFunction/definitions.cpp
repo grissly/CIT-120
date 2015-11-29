@@ -1,9 +1,11 @@
 #include <iostream>
+#include <string>
 #include <iomanip>
 #include "Header.h"
 using namespace std;
 
-void printTitle() {
+//     DONE
+void printTitle() {      //     DONE
 	cout
 		<< "\n\t  Sample Monster Function Lab (while, for, switch)  "
 		<< "\n\t         includes review of switch as a menu        "
@@ -12,7 +14,8 @@ void printTitle() {
 		<< endl << endl << endl;
 }
 
-void printMenu() {
+//     DONE
+void printMenu() {     //     DONE
 	cout
 		<< "\t 1] Average a set of non-negative numbers (sentinel)\n"
 		<< "\t 2] Enter a number in a given range\n"
@@ -25,7 +28,8 @@ void printMenu() {
 		<< "\t 8] End the program\n\n";
 }
 
-char getLetter() {
+//     DONE
+char getLetter() {     //     DONE
 	char c;
 	cin >> c;		cin.ignore(80, '\n');
 
@@ -37,7 +41,8 @@ char getLetter() {
 	return c;
 }
 
-double getNum() {
+//     DONE
+double getNum() {     //     DONE
 	double x;
 
 	while (!(cin >> x)) {
@@ -49,7 +54,8 @@ double getNum() {
 	return x;
 }
 
-int getInt() {
+//     DONE
+int getInt() {     //     DONE
 	double x = getNum();
 
 	while (int(x) != x) {
@@ -60,7 +66,8 @@ int getInt() {
 	return int(x);
 }
 
-int getPosInt() {
+//     DONE
+int getPosInt() {     //     DONE
 	int x = getInt();
 
 	while (x < 1) {
@@ -79,24 +86,18 @@ double getAvg() {
 		count++;
 		total += x;
 
-		cout
-			<< "Please enter the " << count
-			<< (count % 10 == 1 && count % 100 != 11 ? "st" :
-			count % 10 == 2 && count % 100 != 12 ? "nd" :
-			count % 10 == 3 && count % 100 != 13 ? "rd" : "th")
-			<< " number: ";
+		cout << "Please enter the " << count << findOrdinalSuffix(count) << " number: ";
 		x = getInt();
 	}
 
-	if (count == 1) {
-		cout << "There is no data to find the average of\n\n\n";
+	if (count == 1)
 		return -1.0;
-	}
 	else
 		return total / (count - 1);
 }
 
-double getNumInRange(double start, double end) {
+//     DONE
+double getNumInRange(double start, double end) {     //     DONE
 	double x = getNum();
 
 	while (x < start || x > end) {
@@ -112,11 +113,12 @@ double getNumInRange(double start, double end) {
 	return x;
 }
 
-int getIntInRange(int start, int end) {
+//     DONE
+int getIntInRange(int start, int end) {     //     DONE
 	int x = getInt();
 
 	while (x < start || x > end) {
-		cout 
+		cout
 			<< "\tYour number must be "
 			<< (x < start ? "greater" : "less")
 			<< " than or equal to "
@@ -128,7 +130,8 @@ int getIntInRange(int start, int end) {
 	return x;
 }
 
-int classifyInt(int x) {
+//     DONE
+int classifyInt(int x) {     //     DONE
 	int total = 0;
 
 	for (int i = 1; i < x; i++)
@@ -137,22 +140,22 @@ int classifyInt(int x) {
 	return (total > x ? 1 : total < x ? -1 : 0);
 }
 
-void printASCII(int x) {
+void printASCII(int cpl) {    //   ???
 	int const WIDTH_ONE = 4, WIDTH_TWO = 7;
 
 	for (int i = 0; i < 256; i++) {
 		cout << setw(WIDTH_ONE) << i << setw(WIDTH_TWO);
-		switch (i) {
-			case 0:		cout << "NULL";		break;
-			case 7:		cout << "\\a";		break;
-			case 8:		cout << "\\b";		break;
-			case 9:		cout << "\\t";		break;
-			case 10:	cout << "\\n";		break;
-			case 11:	cout << "\\v";		break;
-			case 13:	cout << "\\r";		break;
-			default:	cout << char(i);
+		switch (char(i)) {   // no majic numbers - don't look at the ascii table
+		case '\0':	cout << "NULL";		break;
+		case '\a':	cout << "\\a";		break;
+		case '\b':	cout << "\\b";		break;
+		case '\t':	cout << "\\t";		break;
+		case '\n':	cout << "\\n";		break;
+		case '\v':	cout << "\\v";		break;
+		case '\r':	cout << "\\r";		break;
+		default:	cout << char(i);
 		}
-		cout << (i % x == 3 ? "\n" : "   ||  ");
+		cout << (i % cpl == cpl - 1 ? "\n" : "   ||  ");
 	}
 	cout << "\n\n";
 }
@@ -169,7 +172,7 @@ int getPrime() {
 }
 
 bool isPrime(int x){
-	for (int i = 2; i * i <= x; i++) 
+	for (int i = 2; i * i <= x; i++)
 		if (x % i == 0)
 			return false;
 
@@ -185,4 +188,11 @@ int getIntMoreThan(int n) {
 	}
 
 	return x;
+}
+
+string findOrdinalSuffix(int count) {
+	return
+		count % 10 == 1 && count % 100 != 11 ? "st" :
+		count % 10 == 2 && count % 100 != 12 ? "nd" :
+		count % 10 == 3 && count % 100 != 13 ? "rd" : "th";
 }
