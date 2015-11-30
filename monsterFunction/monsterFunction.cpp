@@ -8,6 +8,7 @@
 #include "Header.h"
 using namespace std;
 
+//  main is DONE
 void main() {
 	double
 		x,						// for receiving double as input
@@ -32,7 +33,7 @@ void main() {
 
 		cout << endl;
 		switch (y) {
-		case 1:				////////	Option 1 (Avg set of pos num)	////////
+		case 1:				////////	Option 1 (Avg set of pos num)	////////   DONE
 			avg = getAvg();
 
 			if (avg >= 0)
