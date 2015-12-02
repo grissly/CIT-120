@@ -11,9 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{12CAEDE9-72C7-4CF3-911E-C4D777C61DBC}</ProjectGuid>
+    <ProjectGuid>{F97EC1EC-2081-4337-8331-8A9567D8006E}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>printAlpha</RootNamespace>
+    <RootNamespace>printAlphIMPROVED</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -76,11 +76,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="myFunctions.cpp" />
-    <ClCompile Include="printAlpha.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="myHeader.h" />
+    <ClCompile Include="printAlphaIMPROVED.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
