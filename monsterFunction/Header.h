@@ -68,27 +68,27 @@ int getIntInRange(int start, int end);                       //     DONE
 //					Prints descriptive error messgaes
 //					Removes everything from the cin buffer
 //					Restores the cin object if needed
-double getNumInRange(double start, double end);
+double getNumInRange(double start, double end);                     //     DONE
 
 //  Pre Condition:	NONE
 // Post Condition:	Returns a valid prime number
 //					Prints descriptive error messgaes
 //					Removes everything from the cin buffer
 //					Restores the cin object if needed
-int getPrime();
+int getPrime();                     //     DONE
 
 //  Pre Condition:	x > 1
-// Post Condition:	Returns true if x is valid prime number
-bool isPrime(int x);
+// Post Condition:	Returns true if x is valid prime number, false otherwise
+bool isPrime(int x);                     //     DONE
 
 //  Pre Condition:	NONE
 // Post Condition:	Returns a valid number > n
 //					Prints descriptive error messgaes
 //					Removes everything from the cin buffer
 //					Restores the cin object if needed
-int getIntMoreThan(int n);
+int getIntMoreThan(int n);                     //     DONE
 
 
 //  Pre Condition:	x > 0
 // Post Condition:	Returns a string of the ordinal suffix of x
-string findOrdinalSuffix(int count);
+string findOrdinalSuffix(int count);           //     DONE
