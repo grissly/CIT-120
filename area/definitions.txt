@@ -94,7 +94,7 @@ void getTriangleSides(double &a, double &b, double &c) {       //   DONE
 	while (a > b + c || b > a + c || c > a + b) {
 		cout
 			<< "\aThe sum of two sides of a triangle must be greater than the third side."
-			<< "\nTry again. ";
+			<< "\nTry again.";
 
 		cout << "Side 1: ";
 		a = getPosNum();
