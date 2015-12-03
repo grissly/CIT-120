@@ -143,22 +143,21 @@ void main() {    // main is DONE
 	system("pause");
 }
 
-void printTitle() {
+void printTitle() {      //   DONE
 	cout
 		<< "\n\t              Lab on Optional Arguments              "
 		<< "\n\t                     By J. Guerra                    "
 		<< endl << endl << endl;
 }
 
-void printAlpha(char s, char e, int cpl) {
+void printAlpha(char s, char e, int cpl) {      //   DONE
 	int count = 0;
 
 	for (char l = s; l <= e; l++)
 		cout << l << (count++ % cpl == cpl - 1 ? "\n" : "\t");
-	cout << endl << endl;
 }
 
-char getYorN() {
+char getYorN() {      //   DONE
 	char c;
 
 	cin >> c;	cin.ignore(80, '\n');
@@ -171,8 +170,8 @@ char getYorN() {
 	return c;
 }
 
-char getLetter() {
-	char c;
+char getLetter() {             //   DONE
+	char c;      
 
 	cin >> c;		cin.ignore(80, '\n');
 
