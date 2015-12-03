@@ -90,25 +90,25 @@ void main() {    // main is DONE
 	cout
 		<< "Calling \"printAlpha()\"\n"
 		<< "\tPrinting from A to Z, 5 characters per line:\n\n";
-	printAlpha();
+	printAlpha();			cout << "\n\n";
 
 	////////////             printAlpha('T')            ////////////
 	cout
 		<< "Calling \"printAlpha('T')\"\n"
 		<< "\tPrinting from T to Z, 5 characters per line:\n\n";
-	printAlpha('T');
+	printAlpha('T');			cout << "\n\n";
 
 	////////////           printAlpha('C', 'W')         ////////////
 	cout
 		<< "Calling \"printAlpha('C', 'W')\"\n"
 		<< "\tPrinting from C to W, 5 characters per line:\n\n";
-	printAlpha('C', 'W');
+	printAlpha('C', 'W');			cout << "\n\n";
 
 	////////////         printAlpha('D', 'Y', 3)        ////////////
 	cout
 		<< "Calling \"printAlpha('D', 'Y', 3)\"\n"
 		<< "\tPrinting from D to Y, 3 characters per line:\n\n";
-	printAlpha('D', 'Y', 3);
+	printAlpha('D', 'Y', 3);			cout << "\n\n";
 
 	////////////              User Testing              ////////////
 	cout << "Do you want to choose the arguments? ";
@@ -120,17 +120,19 @@ void main() {    // main is DONE
 		cout << "\tEnter the starting letter: ";
 		s = getLetter();
 		cout << "\tEnter the ending letter: ";
-		e = getE(s);
+		e = getLetSameCaseAfter(s);  
 		cout
 			<< "\tHow many letters do you want me to print per line   " << endl
 			<< "\t   (if you hit ENTER I will use the default value): ";
 		if (cin.peek() == '\n') {
-			cin.ignore(1, '\n');
-			printAlpha(s, e);
+			cout << "Calling \"printAlpha('" << s << "', '" << e << "')\"\n"; 
+			printAlpha(s, e);			cout << "\n\n";
 		}
 		else {
-			cin >> cpl;		cin.ignore(40, '\n');
-			printAlpha(s, e, cpl);
+			cpl = getPosInt();		
+
+			cout << "Calling \"printAlpha('" << s << "', '" << e << "', " << cpl << ")\"\n";		// cout
+			printAlpha(s, e, cpl);			cout << "\n\n";
 		}
 
 		cout << "Do you want to choose the arguments again? ";
