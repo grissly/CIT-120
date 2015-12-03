@@ -9,42 +9,76 @@ using namespace std;
 
 //  Pre Condition:  NONE
 // Post Condition:  Prints the Title to the console
-void printTitle();
+void printTitle();        //   DONE
 
 //  Pre Condition:  s < e
-//					s, e should be letters of the same case 
+//					s, e must be letters of the same case 
+//					cpl must be a positive integer
 // Post Condition:  Prints alphabet from [s, e] with cpl characters per line
-void printAlpha(char s = 'A', char e = 'Z', int cpl = 5);
+void printAlpha(char s = 'A', char e = 'Z', int cpl = 5);       //   DONE
 
 //  Pre Condition:	NONE
 // Post Condition:	Returns 'Y', 'y', 'N', or 'n'
-//					Prints descriptive error message
+//					Prints descriptive error messages
 //					Removes everything from the cin buffer
-char getYorN();
+char getYorN();       //   DONE
 
 //  Pre Condition:	None
 // Post Condition:	Returns a valid letter
-//					Prints error message with incorrect input
-//					Clears keyboard buffer
-char getLetter();
+//					Prints descriptive error messages
+//					Removes everything from the cin buffer
+char getLetter();       //   DONE
 
-//  Pre Condition:	s is an alphabetic letter
+//  Pre Condition:	s is a letter
 // Post Condition:	Returns a valid letter after s and of the same case
 //					Prints descriptive error messages
-//					Clears keyboard buffer
-char getE(char s);
+//					Removes everything from the cin buffer
+char getLetSameCaseAfter(char s);       //   DONE
 
-//  Pre Condition:	c is an alphabetic letter
+//  Pre Condition:	c is a letter
 // Post Condition:	Returns true if c is uppercase, false otherwise
-bool isUp(char c);
+bool isUp(char c);       //   DONE
 
-//  Pre Condition:	s is an alphabetic letter
+//  Pre Condition:	s is a letter
 // Post Condition:	Returns a valid letter that matches the case of s
 //					Prints descriptive error messages
-//					Clears keyboard buffer
-char getMatching(char s);
+//					Removes everything from the cin buffer
+char getSameCase(char s);       //   DONE
 
-void main() {
+//  Pre Condition:	NONE
+// Post Condition:	Returns an upper case letter
+//					Prints descriptive error messages
+//					Removes everything from the cin buffer
+char getUpper();
+
+//  Pre Condition:	NONE
+// Post Condition:	Returns a lower case letter
+//					Prints descriptive error messages
+//					Removes everything from the cin buffer
+char getLower();
+
+//  Pre Condition:  NONE
+// Post Condition:	Returns a valid number
+//					Prints descriptive error messages
+//					Removes everything from the cin buffer
+//					Restores the cin object if needed
+double getNum();      //   DONE
+
+//  Pre Condition:	NONE
+// Post Condition:	Returns a valid Integer
+//					Prints descriptive error messages
+//					Removes everything from the cin buffer
+//					Restores the cin object if needed
+int getInt();      //   DONE
+
+//  Pre Condition:	None
+// Post Condition:	Returns a valid positive number
+//					Prints descriptive error messages
+//					Removes everything from the cin buffer
+//					Restores the cin object if needed
+int getPosInt();      //   DONE
+
+void main() {    // main is DONE
 	char s, e, c;				// for user testing
 	int cpl;					// characters per line
 
