@@ -49,13 +49,13 @@ char getSameCase(char s);       //   DONE
 // Post Condition:	Returns an upper case letter
 //					Prints descriptive error messages
 //					Removes everything from the cin buffer
-char getUpper();
+char getUpper();       //   DONE
 
 //  Pre Condition:	NONE
 // Post Condition:	Returns a lower case letter
 //					Prints descriptive error messages
 //					Removes everything from the cin buffer
-char getLower();
+char getLower();       //   DONE
 
 //  Pre Condition:  NONE
 // Post Condition:	Returns a valid number
@@ -131,7 +131,7 @@ void main() {    // main is DONE
 		else {
 			cpl = getPosInt();		
 
-			cout << "Calling \"printAlpha('" << s << "', '" << e << "', " << cpl << ")\"\n";		// cout
+			cout << "Calling \"printAlpha('" << s << "', '" << e << "', " << cpl << ")\"\n";
 			printAlpha(s, e, cpl);			cout << "\n\n";
 		}
 
@@ -195,11 +195,11 @@ char getLetSameCaseAfter(char s) {      //   DONE
 	return e;
 }
 
-char getSameCase(char s) {   //  ???  COULD BE 1 STATEMENT IF YOU HAVE A GETUPPER AND GETLOWER AUX FUNCTIONS
-	return (isUp(s) ? getUpper() : getLower());
+char getSameCase(char s) {       //   DONE
+	return isUp(s) ? getUpper() : getLower();
 }
 
-char getUpper() {
+char getUpper() {    //   DONE
 	char c;
 
 	cin >> c;		cin.ignore(80, '\n');
@@ -212,7 +212,7 @@ char getUpper() {
 	return c;
 }
 
-char getLower() {
+char getLower() {    //   DONE
 	char c;
 
 	cin >> c;		cin.ignore(80, '\n');
