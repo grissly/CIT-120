@@ -183,32 +183,82 @@ char getLetter() {             //   DONE
 	return c;
 }
 
-char getE(char s) {
-	char e = getMatching(s);
+char getLetSameCaseAfter(char s) {      //   DONE
+	char e = getSameCase(s);
 	
 	while (e < s) {
 		cout
 			<< "\tEnd letter must be after starting letter."
 			<< endl << "\tTry again: ";
-		e = getMatching(s);
+		e = getSameCase(s);
 	}
 	return e;
 }
 
-char getMatching(char s) {
-	char e = getLetter();
-	bool sCase = isUp(s);
-
-	if (isUp(e) != sCase) {
-		cout 
-			<< "\tPlease enter a"
-			<< (sCase == 0 ? " LOWER" : "n UPPER")
-			<< " case letter. Try again: ";
-		e = getLetter();
-	}
-	return e;
+char getSameCase(char s) {   //  ???  COULD BE 1 STATEMENT IF YOU HAVE A GETUPPER AND GETLOWER AUX FUNCTIONS
+	return (isUp(s) ? getUpper() : getLower());
 }
 
-bool isUp(char c) {
+char getUpper() {
+	char c;
+
+	cin >> c;		cin.ignore(80, '\n');
+
+	while (c < 'A' || c >'Z') {
+		cout << "\tPlease enter an UPPER case letter. Try again: ";
+		cin >> c;		cin.ignore(80, '\n');
+	}
+
+	return c;
+}
+
+char getLower() {
+	char c;
+
+	cin >> c;		cin.ignore(80, '\n');
+
+	while (c < 'a' || c >'z') {
+		cout << "\tPlease enter a LOWER case letter. Try again: ";
+		cin >> c;		cin.ignore(80, '\n');
+	}
+
+	return c;
+}
+
+bool isUp(char c) {      //   DONE
 	return c >= 'A' && c <= 'Z';
+}
+
+double getNum() {      //   DONE
+	double x;
+
+	while (!(cin >> x)) {
+		cin.clear();	cin.ignore(30, '\n');
+		cout << "Please no letters. Try again: ";
+	}
+	cin.ignore(80, '\n');
+
+	return x;
+}
+
+int getInt() {      //   DONE
+	double x = getNum();
+
+	while (int(x) != x) {
+		cout << "Please enter an integer: ";
+		x = getNum();
+	}
+
+	return int(x);
+}
+
+int getPosInt() {      //   DONE
+	int x = getInt();
+
+	while (x <= 0) {
+		cout << "Please enter a positive integer: ";
+		x = getInt();
+	}
+
+	return x;
 }
