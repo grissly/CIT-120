@@ -3,59 +3,86 @@
 // Programmer: Josh Guerra
 // Last Modified: Dec 3, 2015
 
+#include "myFunctions.h"
 #include <iostream>
 #include <fstream>
 #include <string>
 using namespace std;
 
-//  Pre Condition:  NONE
-// Post Condition:  Prints the Title to the console
-void printTitle();
-
-//  Pre Condition:  NONE
-// Post Condition:  Loads the array with 5 for each element
-void load5s(int a[], int n);
-
-//  Pre Condition:  NONE
-// Post Condition:  Prints a[] to os, epl elements per line
-void printArr(const int a[], int n, int epl = 5, ostream &os = cout);
-
 void main() {
 	string
 		calling = "I am about to call ",
 		finished = "Finished loading ";
-	int const SIZE_5s = 139;
-	int fives[SIZE_5s];
+
+	int const 
+		SIZE_5 = 139,
+		SIZE_EVEN = 90,
+		SIZE_ODD = 100,
+		SIZE_SQ = 42,
+		SIZE_PRIME = 120;
+
+	int fives[SIZE_5],
+		evens[SIZE_EVEN],
+		odds[SIZE_ODD],
+		sqs[SIZE_SQ],
+		primes[SIZE_PRIME];
 
 	system("color 2f");		// console fun :D | 2 = green background, f = white text
 
 	printTitle();
 
+	////////////////		array of fives		////////////////
 	cout << calling << "loadArrayOf5s ..." << endl;
-	load5s(fives, SIZE_5s);
+	load5(fives, SIZE_5);
 	cout << finished << "loadArrayOf5s ..." << endl;
 
 	cout << calling << "printArray (with the default value for the perLine)..." << endl;
-	printArr(fives, SIZE_5s);
+	printArr(fives, SIZE_5);
 
 	system("pause");
+
+	////////////////		 array of evens 		////////////////
+	cout << calling << "loadEvenArray ..." << endl;
+	loadEven(evens, SIZE_EVEN);
+	cout << finished << "loadEvenArray ..." << endl;
+
+	cout << calling << "printArray (with 4 perLine)..." << endl;
+	printArr(evens, SIZE_EVEN, 4);
+
+	system("pause");
+
+	////////////////		  array of odds  		////////////////
+	cout << calling << "loadOddArray ..." << endl;
+	loadOdd(odds, SIZE_ODD);
+	cout << finished << "loadOddArray ..." << endl;
+
+	cout << calling << "printArray (with 3 perLine)..." << endl;
+	printArr(odds, SIZE_ODD, 3);
+
+	system("pause");
+
+	////////////////		array of squares		////////////////
+	cout << calling << "loadPSA ..." << endl;
+	loadSq(sqs, SIZE_SQ);
+	cout << finished << "loadPSA ..." << endl;
+
+	cout << calling << "printArray (with 1 perLine)..." << endl;
+	printArr(sqs, SIZE_SQ, 1);
+
+	system("pause");
+
+	////////////////		array of primes 		////////////////
+	cout << calling << "loadPrimeArray ..." << endl;
+	loadPrime(primes, SIZE_PRIME);
+	cout << finished << "loadPrimeArray ..." << endl;
+
+	cout << calling << "printArray (with 2 perLine)..." << endl;
+	printArr(primes, SIZE_PRIME, 2);
+
+	system("pause");
+
+	////////////////		  file output   		////////////////
+
+
+
 }
-
-void printTitle() {    //   DONE
-	cout
-		<< "\n\t This is a lab on completely filled arrays "
-		<< "\n\t               By J. Guerra                "
-		<< endl << endl;
-}
-
-void load5s(int a[], int n) {    //   DONE
-	for (int i = 0; i < n; i++)
-		a[i] = 5;
-}
-
-
-void printArr(const int a[], int n, int epl, ostream &os) {    //   DONE
-	for (int i = 0; i < n; i++)
-		os << a[i] << (i % epl == epl - 1 || i == n -1 ? "\n" : "\t");
-}
-
