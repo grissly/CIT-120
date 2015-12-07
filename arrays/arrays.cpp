@@ -88,7 +88,7 @@ void main() {
 	////////////////		  file output   		////////////////
 	cout << "Do you want to output arrays to file? ";
 	if (getYorN() == 'Y') {
-		getFileName();
+		fileName = getFileName();
 	}
 
 	system("pause");
