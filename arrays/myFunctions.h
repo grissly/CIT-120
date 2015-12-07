@@ -4,7 +4,7 @@ using namespace std;
 
 //  Pre Condition:  NONE
 // Post Condition:  Prints the Title to the console
-void printTitle();
+void printTitle(ostream &os = cout);
 
 //  Pre Condition:  n is the size of the array
 // Post Condition:  Loads the array with 5 for each element
@@ -29,3 +29,14 @@ void loadPrime(int a[], int n);
 //  Pre Condition:  NONE
 // Post Condition:  Prints a[] to os, epl elements per line
 void printArr(const int a[], int n, int epl = 5, ostream &os = cout);
+
+//  Pre Condition:  NONE
+// Post Condition:  Returns 'Y' or 'N'
+//					Prints descriptive error messages
+//					Removes everything from the cin buffer
+char getYorN();
+
+//  Pre Condition:  NONE
+// Post Condition:  Returns a string
+//					Removes everything from the cin buffer
+string getFileName();

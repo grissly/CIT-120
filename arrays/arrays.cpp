@@ -10,10 +10,6 @@
 using namespace std;
 
 void main() {
-	string
-		calling = "I am about to call ",
-		finished = "Finished loading ";
-
 	int const 
 		SIZE_5 = 139,
 		SIZE_EVEN = 90,
@@ -27,9 +23,17 @@ void main() {
 		sqs[SIZE_SQ],
 		primes[SIZE_PRIME];
 
+	string
+		calling = "I am about to call ",
+		finished = "Finished loading ", 
+		fileName;
+
+	ofstream oFile;
+
 	system("color 2f");		// console fun :D | 2 = green background, f = white text
 
 	printTitle();
+	cout << "\n\n";
 
 	////////////////		array of fives		////////////////
 	cout << calling << "loadArrayOf5s ..." << endl;
@@ -82,7 +86,10 @@ void main() {
 	system("pause");
 
 	////////////////		  file output   		////////////////
+	cout << "Do you want to output arrays to file? ";
+	if (getYorN() == 'Y') {
+		getFileName();
+	}
 
-
-
+	system("pause");
 }

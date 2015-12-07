@@ -4,11 +4,10 @@
 #include <string>
 using namespace std;
 
-void printTitle() {    //   DONE
+void printTitle(ostream &os) {    //   DONE
 	cout
 		<< "\n\t This is a lab on completely filled arrays "
-		<< "\n\t               By J. Guerra                "
-		<< endl << endl;
+		<< "\n\t               By J. Guerra                ";
 }
 
 void load5(int a[], int n) {    //   DONE
@@ -20,4 +19,21 @@ void load5(int a[], int n) {    //   DONE
 void printArr(const int a[], int n, int epl, ostream &os) {    //   DONE
 	for (int i = 0; i < n; i++)
 		os << a[i] << (i % epl == epl - 1 || i == n - 1 ? "\n" : "\t");
+}
+
+char getYorN() {
+	char c;
+
+	cin >> c;	cin.ignore(80, '\n');
+
+	while (c != 'Y' && c != 'y' && c != 'N' && c != 'n') {
+		cout << "Please type Y or N. Try again: ";
+		cin >> c;		cin.ignore(80, '\n');
+	}
+
+	return (c == 'y' ? 'Y' : c == 'n' ? 'N' : c);	// returns only capitals
+}
+
+string getFileName() {
+	
 }
