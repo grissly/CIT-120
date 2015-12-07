@@ -1,0 +1,38 @@
+~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
+
+Your mission, should you chose to accept it, is to hunt the Wumpus.
+The Wumpus lives in a cave system with 20 rooms. Each room has three 
+tunnels connecting to other rooms. 
+
+HAZARDS:
+Bottomless Pits - Two rooms have bottomless pits in them.
+    If you enter, you fall into the pit (and lose!)
+
+Giant Bats - Two other rooms have giant bats. 
+    If you enter, the bat grabs you and deposits you in another room 
+    at random. (Which might be troublesome.)
+
+WUMPUS:
+The Wumpus is not bothered by the hazards (he has sucker feet and is too 
+big for a bat to lift). Usually he is asleep. Two things wake him up: 
+entering his room and shooting an arrow.
+
+If you wake the Wumpus, he will eat you (and you lose!)
+
+YOU:
+Each turn you will have the option to move or shoot a crooked arrow
+    MOVING: you may take any tunnel connecting to your current room
+	(be warned, not every room is safe)
+    ARROWS: You have ONE arrow. You lose if you shoot and miss the WUMPUS
+	(DON'T MISS). Your arrow can be shot into any adjacent room. 
+	If the arrow hits the Wumpus, you win.
+	If the arrow hits you, you lose.
+
+    WARNINGS:
+	When you are in a room adjacent to the Wumpus or a hazard, 
+	the computer says:
+	    Wumpus - 'You smell the unmistakable stench of the Wumpus'
+	    Bat    - 'You hear the flapping of large wings'
+	    Pit    - 'You feel cold draft'
+
+~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
