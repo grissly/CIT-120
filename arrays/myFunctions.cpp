@@ -35,5 +35,9 @@ char getYorN() {
 }
 
 string getFileName() {
+	string filename;
 	
+	getline(cin >> ws, filename);
+
+	return filename;
 }
