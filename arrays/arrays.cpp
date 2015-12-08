@@ -101,35 +101,31 @@ void main() {
 		printTitle(oFile);
 
 		oFile
-			<< endl << endl << endl << printing
-			<< "first 139 elements of the arrayOf5s, two per line:\n";
+			<< endl << endl << endl 
+			<< printing << "first 139 elements of the arrayOf5s, two per line:\n";
 		printArr(fives, SIZE_5, 2, oFile);
 
 		oFile
-			<< endl << endl << "\t**************************************************"
-			<< endl << endl << printing
-			<< "first 90 even numbers, two per line:\n";
+			<< "\n\n\t**************************************************\n\n"
+			<< printing << "first 90 even numbers, two per line:\n";
 		printArr(evens, SIZE_EVEN, 2, oFile);
 
 		oFile
-			<< endl << endl << "\t**************************************************"
-			<< endl << endl << printing
-			<< "first 100 odd numbers, three per line:\n";
+			<< "\n\n\t**************************************************\n\n" 
+			<< printing << "first 100 odd numbers, three per line:\n";
 		printArr(odds, SIZE_ODD, 3, oFile);
 
 		oFile
-			<< endl << endl << "\t**************************************************"
-			<< endl << endl << printing
-			<< "first 42 perfect squares, three per line:\n";
+			<< "\n\n\t**************************************************\n\n"
+			<< printing << "first 42 perfect squares, three per line:\n";
 		printArr(sqs, SIZE_SQ, 3, oFile);
 
 		oFile
-			<< endl << endl << "\t**************************************************"
-			<< endl << endl << printing
-			<< "first 120 prime numbers, one per line:\n";
+			<< "\n\n\t**************************************************\n\n" 
+			<< printing << "first 120 prime numbers, one per line:\n";
 		printArr(primes, SIZE_PRIME, 1, oFile);
+		
 		oFile << endl;
-
 		oFile.close();
 
 		cout << "\tDone printing. \n\tThanks for using this program!" << endl << endl;
