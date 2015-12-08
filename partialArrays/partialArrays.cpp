@@ -9,9 +9,36 @@
 #include <string>
 using namespace std;
 
+//  Pre Condition:  n is the logical size of a[]
+//					os must be a valid open output stream
+// Post Condition:  Prints a[] to os
 void printTitle(const string a[], int n, ostream &os = cout);
+
+//  Pre Condition:  n is the logical size of a[]
+//					os must be a valid open output stream
+// Post Condition:  Prints a[] to os, epl elements per line
 void printArr(const double a[], int n, int epl = 5, ostream &os = cout);
+
+//  Pre Condition:  n is the size of the array
+// Post Condition:  Loads the array with user inputed scores
+//					Prints descriptive error messages
+//					Removes everything from cin buffer
+//					Restores cin object if needed
+//					Returns the logical size of the array
 int loadScores(double a[], int n);
+
+//  Pre Condition:	NONE
+// Post Condition:	Returns a valid number less than n
+//					Prints descriptive error messages
+//					Removes everything from the cin buffer
+//					Restores the cin object if needed
+double getNumLessThan(double n);
+
+//  Pre Condition:	NONE
+// Post Condition:	Returns a valid number
+//					Prints descriptive error messages
+//					Removes everything from the cin buffer
+//					Restores the cin object if needed
 double getNum();
 
 void main() {
@@ -72,7 +99,7 @@ int loadScores(double a[], int n) {
 
 	for (count = 0; count < n && score > 0; count++) {
 		cout << "Enter score for student " << count + 1 << ": ";
-		score = getNum();
+		score = getNumLessThan(100);
 		if (score >= 0) 
 			a[count] = score;
 		else
@@ -83,6 +110,18 @@ int loadScores(double a[], int n) {
 		cout << "Array FULL! Cannot accept any more scores\n";
 
 	return count;
+}
+
+
+double getNumLessThan(double n) {
+	double x = getNum();
+
+	while (x > 100) {
+		cout << "\tInvalid score. Score cannot be more than 100. Try again: ";
+		x = getNum();
+	}
+
+	return x;
 }
 
 double getNum() {
