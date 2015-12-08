@@ -25,8 +25,8 @@ void main() {
 
 	string
 		calling = "I am about to call ",
-		finished = "Finished loading ", 
-		fileName;
+		finished = "Finished loading ",
+		printing = "Here are the ";
 
 	ofstream oFile;
 
@@ -42,53 +42,97 @@ void main() {
 
 	cout << calling << "printArray (with the default value for the perLine)..." << endl;
 	printArr(fives, SIZE_5);
+	cout << "\n\n";
 
 	system("pause");
 
 	////////////////		 array of evens 		////////////////
-	cout << calling << "loadEvenArray ..." << endl;
+	cout << "\n\n" << calling << "loadEvenArray ..." << endl;
 	loadEven(evens, SIZE_EVEN);
 	cout << finished << "loadEvenArray ..." << endl;
 
 	cout << calling << "printArray (with 4 perLine)..." << endl;
 	printArr(evens, SIZE_EVEN, 4);
+	cout << "\n\n";
 
 	system("pause");
 
 	////////////////		  array of odds  		////////////////
-	cout << calling << "loadOddArray ..." << endl;
+	cout << "\n\n" << calling << "loadOddArray ..." << endl;
 	loadOdd(odds, SIZE_ODD);
 	cout << finished << "loadOddArray ..." << endl;
 
 	cout << calling << "printArray (with 3 perLine)..." << endl;
 	printArr(odds, SIZE_ODD, 3);
+	cout << "\n\n";
 
 	system("pause");
 
 	////////////////		array of squares		////////////////
-	cout << calling << "loadPSA ..." << endl;
+	cout << "\n\n" << calling << "loadPSA ..." << endl;
 	loadSq(sqs, SIZE_SQ);
 	cout << finished << "loadPSA ..." << endl;
 
 	cout << calling << "printArray (with 1 perLine)..." << endl;
 	printArr(sqs, SIZE_SQ, 1);
+	cout << "\n\n";
 
 	system("pause");
 
 	////////////////		array of primes 		////////////////
-	cout << calling << "loadPrimeArray ..." << endl;
+	cout << "\n\n" << calling << "loadPrimeArray ..." << endl;
 	loadPrime(primes, SIZE_PRIME);
 	cout << finished << "loadPrimeArray ..." << endl;
 
 	cout << calling << "printArray (with 2 perLine)..." << endl;
 	printArr(primes, SIZE_PRIME, 2);
+	cout << "\n\n";
 
 	system("pause");
 
 	////////////////		  file output   		////////////////
-	cout << "Do you want to output arrays to file? ";
+	cout << endl << "Do you want to output arrays to file? ";
 	if (getYorN() == 'Y') {
-		fileName = getFileName();
+		cout << endl << "To which file do you want to output the array? ";
+		oFile = connectFileStream();
+
+		cout << endl << "\tPrinting..." << endl;
+
+		printTitle(oFile);
+
+		oFile
+			<< endl << endl << endl << printing
+			<< "first 139 elements of the arrayOf5s, two per line:\n";
+		printArr(fives, SIZE_5, 2, oFile);
+
+		oFile
+			<< endl << endl << "\t**************************************************"
+			<< endl << endl << printing
+			<< "first 90 even numbers, two per line:\n";
+		printArr(evens, SIZE_EVEN, 2, oFile);
+
+		oFile
+			<< endl << endl << "\t**************************************************"
+			<< endl << endl << printing
+			<< "first 100 odd numbers, three per line:\n";
+		printArr(odds, SIZE_ODD, 3, oFile);
+
+		oFile
+			<< endl << endl << "\t**************************************************"
+			<< endl << endl << printing
+			<< "first 42 perfect squares, three per line:\n";
+		printArr(sqs, SIZE_SQ, 3, oFile);
+
+		oFile
+			<< endl << endl << "\t**************************************************"
+			<< endl << endl << printing
+			<< "first 120 prime numbers, one per line:\n";
+		printArr(primes, SIZE_PRIME, 1, oFile);
+		oFile << endl;
+
+		oFile.close();
+
+		cout << "\tDone printing. \n\tThanks for using this program!" << endl << endl;
 	}
 
 	system("pause");

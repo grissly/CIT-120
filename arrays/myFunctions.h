@@ -26,6 +26,10 @@ void loadSq(int a[], int n);
 // Post Condition:  Loads the array with the first n consecutive prime numbers
 void loadPrime(int a[], int n);
 
+//  Pre Condition:  x > 1
+// Post Condition:  returns true if x is prime, otherwise returns false
+bool isPrime(int x);
+
 //  Pre Condition:  NONE
 // Post Condition:  Prints a[] to os, epl elements per line
 void printArr(const int a[], int n, int epl = 5, ostream &os = cout);
@@ -37,6 +41,7 @@ void printArr(const int a[], int n, int epl = 5, ostream &os = cout);
 char getYorN();
 
 //  Pre Condition:  NONE
-// Post Condition:  Returns a string
+// Post Condition:  Returns an output file stream object with open file
+//					Prints descriptive error messages
 //					Removes everything from the cin buffer
-string getFileName();
+ofstream connectFileStream();

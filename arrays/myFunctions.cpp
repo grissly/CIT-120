@@ -5,7 +5,7 @@
 using namespace std;
 
 void printTitle(ostream &os) {    //   DONE
-	cout
+	os
 		<< "\n\t This is a lab on completely filled arrays "
 		<< "\n\t               By J. Guerra                ";
 }
@@ -30,8 +30,6 @@ void loadSq(int a[], int n) {
 		a[i] = (i + 1) * (i + 1);
 }
 
-//  Pre Condition:  n is the size of the array
-// Post Condition:  Loads the array with the first n consecutive prime numbers
 void loadPrime(int a[], int n) {
 	int currentNum = 2;
 	for (int i = 0; i < n; i++) {
@@ -67,7 +65,7 @@ char getYorN() {
 	return (c == 'y' ? 'Y' : c == 'n' ? 'N' : c);	// returns only capitals
 }
 
-string connectFileStream() {
+ofstream connectFileStream() {
 	string filename;
 	ofstream ofs;
 	
@@ -80,7 +78,5 @@ string connectFileStream() {
 		ofs.open(filename);
 	}
 
-	ofs.close();
-
-	return filename;
+	return ofs;
 }
