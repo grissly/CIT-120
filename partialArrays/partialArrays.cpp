@@ -2,7 +2,7 @@
 // The program creates an array of student scores and gives analytics on it
 // Filename: partialArrays
 // Programmer: Josh Guerra
-// Last Modified: Dec 7, 2015
+// Last Modified: Dec 9, 2015
 
 #include <iostream>
 #include <fstream>
@@ -116,7 +116,7 @@ double getNumLessThan(double n) {   //   DONE
 	double x = getNum();
 
 	while (x > n) {
-		cout << "\tInvalid score. Score cannot be more than 100. Try again: ";
+		cout << "\tInvalid score. Score cannot be more than " << n << ". Try again: ";
 		x = getNum();
 	}
 

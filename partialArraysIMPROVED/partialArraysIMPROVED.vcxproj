@@ -76,7 +76,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="myFunctions.cpp" />
     <ClCompile Include="partialArraysIMPROVED.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="myFunctions.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
