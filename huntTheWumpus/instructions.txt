@@ -26,7 +26,7 @@ Each turn you will have the option to move or shoot a crooked arrow
     ARROWS: You have ONE arrow. You lose if you shoot and miss the WUMPUS
 	(DON'T MISS). Your arrow can be shot into any adjacent room. 
 	If the arrow hits the Wumpus, you win.
-	If the arrow hits you, you lose.
+	If you miss, you will wake the Wumpus and he will eat you!
 
     WARNINGS:
 	When you are in a room adjacent to the Wumpus or a hazard, 
