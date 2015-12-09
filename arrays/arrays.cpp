@@ -9,7 +9,7 @@
 #include <string>
 using namespace std;
 
-void main() {
+void main() {   //   DONE
 	int const 
 		SIZE_5 = 139,
 		SIZE_EVEN = 90,
@@ -26,7 +26,8 @@ void main() {
 	string
 		calling = "I am about to call ",
 		finished = "Finished loading ",
-		printing = "Here are the ";
+		printing = "Here are the ",
+		filename;
 
 	ofstream oFile;
 
@@ -35,7 +36,7 @@ void main() {
 	printTitle();
 	cout << "\n\n";
 
-	////////////////		array of fives		////////////////
+	////////////////		array of fives		////////////////         DONE
 	cout << calling << "loadArrayOf5s ..." << endl;
 	load5(fives, SIZE_5);
 	cout << finished << "loadArrayOf5s ..." << endl;
@@ -46,7 +47,7 @@ void main() {
 
 	system("pause");
 
-	////////////////		 array of evens 		////////////////
+	////////////////		 array of evens 		////////////////         DONE
 	cout << "\n\n" << calling << "loadEvenArray ..." << endl;
 	loadEven(evens, SIZE_EVEN);
 	cout << finished << "loadEvenArray ..." << endl;
@@ -57,7 +58,7 @@ void main() {
 
 	system("pause");
 
-	////////////////		  array of odds  		////////////////
+	////////////////		  array of odds  		////////////////         DONE
 	cout << "\n\n" << calling << "loadOddArray ..." << endl;
 	loadOdd(odds, SIZE_ODD);
 	cout << finished << "loadOddArray ..." << endl;
@@ -68,7 +69,7 @@ void main() {
 
 	system("pause");
 
-	////////////////		array of squares		////////////////
+	////////////////		array of squares		////////////////         DONE
 	cout << "\n\n" << calling << "loadPSA ..." << endl;
 	loadSq(sqs, SIZE_SQ);
 	cout << finished << "loadPSA ..." << endl;
@@ -79,7 +80,7 @@ void main() {
 
 	system("pause");
 
-	////////////////		array of primes 		////////////////
+	////////////////		array of primes 		////////////////         DONE
 	cout << "\n\n" << calling << "loadPrimeArray ..." << endl;
 	loadPrime(primes, SIZE_PRIME);
 	cout << finished << "loadPrimeArray ..." << endl;
@@ -94,35 +95,35 @@ void main() {
 	cout << endl << "Do you want to output arrays to file? ";
 	if (getYorN() == 'Y') {
 		cout << endl << "To which file do you want to output the array? ";
-		oFile = connectFileStream();
+		oFile = connectFileStream(filename);   
 
-		cout << endl << "\tPrinting..." << endl;
+		cout << endl << "\tPrinting to " << filename << "..." << endl;
 
 		printTitle(oFile);
 
 		oFile
 			<< endl << endl << endl 
-			<< printing << "first 139 elements of the arrayOf5s, two per line:\n";
+			<< printing << "first " << SIZE_5 << " elements of the arrayOf5s, two per line:\n";
 		printArr(fives, SIZE_5, 2, oFile);
 
 		oFile
 			<< "\n\n\t**************************************************\n\n"
-			<< printing << "first 90 even numbers, two per line:\n";
+			<< printing << "first " << SIZE_EVEN << " even numbers, two per line:\n";
 		printArr(evens, SIZE_EVEN, 2, oFile);
 
 		oFile
 			<< "\n\n\t**************************************************\n\n" 
-			<< printing << "first 100 odd numbers, three per line:\n";
+			<< printing << "first " << SIZE_ODD << " odd numbers, three per line:\n";
 		printArr(odds, SIZE_ODD, 3, oFile);
 
 		oFile
 			<< "\n\n\t**************************************************\n\n"
-			<< printing << "first 42 perfect squares, three per line:\n";
+			<< printing << "first " << SIZE_SQ << " perfect squares, three per line:\n";
 		printArr(sqs, SIZE_SQ, 3, oFile);
 
 		oFile
 			<< "\n\n\t**************************************************\n\n" 
-			<< printing << "first 120 prime numbers, one per line:\n";
+			<< printing << "first " << SIZE_PRIME << " prime numbers, one per line:\n";
 		printArr(primes, SIZE_PRIME, 1, oFile);
 		
 		oFile << endl;

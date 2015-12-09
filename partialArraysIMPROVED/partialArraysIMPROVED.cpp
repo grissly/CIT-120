@@ -2,7 +2,7 @@
 // The program creates an array of student scores and gives analytics on it
 // Filename: partialArrays
 // Programmer: Josh Guerra
-// Last Modified: Dec 7, 2015
+// Last Modified: Dec 8, 2015
 
 #include <iostream>
 #include <fstream>
@@ -11,7 +11,7 @@ using namespace std;
 
 //  Pre Condition:  n <= to the PHYSICAL size of a[]
 //					os must be a valid open output stream
-// Post Condition:  Prints the first n elements of a[] to os
+// Post Condition:  Prints the first n elements of a[] to os, each string on a new line and tabbed in 8 spaces
 void printTitle(const string a[], int n, ostream &os = cout);
 
 //  Pre Condition:  n <= to the PHYSICAL size of a[]
@@ -20,7 +20,7 @@ void printTitle(const string a[], int n, ostream &os = cout);
 void printArr(const double a[], int n, int epl = 5, ostream &os = cout);
 
 //  Pre Condition:  n <= to the PHYSICAL size of a[]
-// Post Condition:  Initializes the first n elements of a[] with user inputed scores
+// Post Condition:  Loads the array with user inputed scores
 //					Prints descriptive error messages
 //					Removes everything from cin buffer
 //					Restores cin object if needed
@@ -41,18 +41,38 @@ double getNumLessThan(double n);
 //					Restores the cin object if needed
 double getNum();
 
-void main() {
-	int const 
-		NUM_LINES_TITLE = 4, 
-		SIZE_SCORES = 3;
+//  Pre Condition:	n <= to the PHYSICAL size of a[]
+//					n > 0
+// Post Condition:	Returns the index of largest element
+int getIndexOfMax(double a[], int n);
 
-	int scoresLogicalSize;
-	double scores[SIZE_SCORES];
+//  Pre Condition:	n <= to the PHYSICAL size of a[]
+//					n > 0
+// Post Condition:	Returns the index of smallest element
+int getIndexOfMin(double a[], int n);
+
+//  Pre Condition:	n is logical size of a[]
+//					n > 0
+// Post Condition:	Returns the average of all elements
+double getAvg(double a[], int n);
+
+void main() {
+	int const
+		NUM_LINES_TITLE = 5,
+		SIZE_SCORES = 30;
+
+	int scoresLogicalSize, 
+		maxIndex, minIndex;
+
+	double 
+		scores[SIZE_SCORES], 
+		avg;
 
 	string title[NUM_LINES_TITLE] = {
 		"This program loads an array of doubles with students' scores",
 		"        using a negative value as the loop's sentinel       ",
-		"         setting physical size to 3 for easy testing        ",
+		"                 calculate basic statistics                 ",
+		"     setting physical size to 30 and default per line 5     ",
 		"                       by J. Guerra                         "
 	};
 
@@ -77,13 +97,27 @@ void main() {
 			<< "\n\nHit ENTER to see the array: ";
 		cin.get();
 
-		cout << "\n\nNow printing the scores: \n";
+		cout << "\n\nNow printing the scores and stats: \n";
 		printArr(scores, scoresLogicalSize);
-		cout << "\n\t\t=============================================\n\n\n";
+
+		if (scoresLogicalSize) {
+			maxIndex = getIndexOfMax(scores, scoresLogicalSize);
+			minIndex = getIndexOfMin(scores, scoresLogicalSize);
+			avg = getAvg(scores, scoresLogicalSize);
+
+			cout
+				<< "\n\t*** The highest score is: " << scores[maxIndex]
+				<< "\n\t*** The lowest  score is: " << scores[minIndex]
+				<< "\n\t*** The average score is: " << avg;
+		}
+		else
+			cout << "\n\tThe array is empty!";
+
+		cout << "\n\n\t\t=============================================\n\n\n";
 	}
 }
 
-void printTitle(const string a[], int n, ostream &os) {   //   DONE
+void printTitle(const string a[], int n, ostream &os) {
 	for (int i = 0; i < n; i++)
 		os << "\n\t" << a[i];
 }
@@ -100,7 +134,7 @@ int loadScores(double a[], int n) {
 	for (count = 0; count < n && score > 0; count++) {
 		cout << "Enter score for student " << count + 1 << ": ";
 		score = getNumLessThan(100);
-		if (score >= 0) 
+		if (score >= 0)
 			a[count] = score;
 		else
 			count--;
@@ -134,4 +168,33 @@ double getNum() {
 	cin.ignore(80, '\n');
 
 	return x;
+}
+
+int getIndexOfMax(double a[], int n) {
+	int indexOfMax = 0;
+
+	for (int i = 0; i < n; i++) 
+		if (a[i] > a[indexOfMax])
+			indexOfMax = i;
+
+	return indexOfMax;
+}
+
+int getIndexOfMin(double a[], int n) {
+	int indexOfMin = 0;
+
+	for (int i = 0; i < n; i++)
+		if (a[i] < a[indexOfMin])
+			indexOfMin = i;
+
+	return indexOfMin;
+}
+
+double getAvg(double a[], int n) {
+	double total = 0;
+
+	for (int i = 0; i < n; i++)
+		total += a[i];
+
+	return total / n;
 }

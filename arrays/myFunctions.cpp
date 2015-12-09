@@ -4,6 +4,9 @@
 #include <string>
 using namespace std;
 
+
+// definitions DONE
+
 void printTitle(ostream &os) {    //   DONE
 	os
 		<< "\n\t This is a lab on completely filled arrays "
@@ -15,22 +18,22 @@ void load5(int a[], int n) {      //   DONE
 		a[i] = 5;
 }
 
-void loadEven(int a[], int n) {
+void loadEven(int a[], int n) {   //   DONE
 	for (int i = 0; i < n; i++)
 		a[i] = (i + 1) * 2;
 }
 
-void loadOdd(int a[], int n) {
+void loadOdd(int a[], int n) {   //   DONE
 	for (int i = 0; i < n; i++)
 		a[i] = i * 2 + 1;
 }
 
-void loadSq(int a[], int n) {
+void loadSq(int a[], int n) {   //   DONE
 	for (int i = 0; i < n; i++)
 		a[i] = (i + 1) * (i + 1);
 }
 
-void loadPrime(int a[], int n) {
+void loadPrime(int a[], int n) {  //   DONE
 	int currentNum = 2;
 	for (int i = 0; i < n; i++) {
 		while (!isPrime(currentNum))
@@ -52,7 +55,7 @@ void printArr(const int a[], int n, int epl, ostream &os) {    //   DONE
 		os << a[i] << (i % epl == epl - 1 || i == n - 1 ? "\n" : "\t");
 }
 
-char getYorN() {
+char getYorN() {   //   DONE
 	char c;
 
 	cin >> c;	cin.ignore(80, '\n');
@@ -65,8 +68,7 @@ char getYorN() {
 	return (c == 'y' ? 'Y' : c == 'n' ? 'N' : c);	// returns only capitals
 }
 
-ofstream connectFileStream() {
-	string filename;
+ofstream connectFileStream(string &filename) {   //   DONE
 	ofstream ofs;
 	
 	getline(cin >> ws, filename);
