@@ -9,37 +9,37 @@
 #include <string>
 using namespace std;
 
-//  Pre Condition:  n <= to the PHYSICAL size of a[]
+//  Pre Condition:  n <= to the LOGICAL size of a[]    
 //					os must be a valid open output stream
 // Post Condition:  Prints the first n elements of a[] to os
-void printTitle(const string a[], int n, ostream &os = cout);
+void printTitle(const string a[], int n, ostream &os = cout);             //   DONE
 
-//  Pre Condition:  n <= to the PHYSICAL size of a[]
+//  Pre Condition:  n <= to the LOGICAL size of a[]
 //					os must be a valid open output stream
 // Post Condition:  Prints the first n elements of a[] to os, epl elements per line
-void printArr(const double a[], int n, int epl = 5, ostream &os = cout);
+void printArr(const double a[], int n, int epl = 5, ostream &os = cout);   //   DONE
 
 //  Pre Condition:  n <= to the PHYSICAL size of a[]
-// Post Condition:  Initializes the first n elements of a[] with user inputed scores
+// Post Condition:  Initializes the first n elements of a[] with user inputed scores LESS THAN 100
 //					Prints descriptive error messages
 //					Removes everything from cin buffer
 //					Restores cin object if needed
 //					Returns the logical size of the array
-int loadScores(double a[], int n);
+int loadScores(double a[], int n);   //   DONE
 
 //  Pre Condition:	NONE
 // Post Condition:	Returns a valid number less than n
 //					Prints descriptive error messages
 //					Removes everything from the cin buffer
 //					Restores the cin object if needed
-double getNumLessThan(double n);
+double getNumLessThan(double n);   //   DONE
 
 //  Pre Condition:	NONE
 // Post Condition:	Returns a valid number
 //					Prints descriptive error messages
 //					Removes everything from the cin buffer
 //					Restores the cin object if needed
-double getNum();
+double getNum();   //   DONE
 
 void main() {
 	int const 
@@ -88,7 +88,7 @@ void printTitle(const string a[], int n, ostream &os) {   //   DONE
 		os << "\n\t" << a[i];
 }
 
-void printArr(const double a[], int n, int epl, ostream &os) {
+void printArr(const double a[], int n, int epl, ostream &os) {   //   DONE
 	for (int i = 0; i < n; i++)
 		os << a[i] << (i % epl == epl - 1 || i == n - 1 ? "\n" : "\t");
 }
@@ -112,11 +112,10 @@ int loadScores(double a[], int n) {
 	return count;
 }
 
-
-double getNumLessThan(double n) {
+double getNumLessThan(double n) {   //   DONE
 	double x = getNum();
 
-	while (x > 100) {
+	while (x > n) {
 		cout << "\tInvalid score. Score cannot be more than 100. Try again: ";
 		x = getNum();
 	}
@@ -124,7 +123,7 @@ double getNumLessThan(double n) {
 	return x;
 }
 
-double getNum() {
+double getNum() {   //   done
 	double x;
 
 	while (!(cin >> x)) {
