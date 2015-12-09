@@ -9,12 +9,12 @@
 #include <string>
 using namespace std;
 
-//  Pre Condition:  n <= to the PHYSICAL size of a[]
+//  Pre Condition:  n <= to the LOGICAL size of a[]
 //					os must be a valid open output stream
 // Post Condition:  Prints the first n elements of a[] to os
 void printTitle(const string a[], int n, ostream &os = cout);
 
-//  Pre Condition:  n <= to the PHYSICAL size of a[]
+//  Pre Condition:  n <= to the LOGICAL size of a[]
 //					os must be a valid open output stream
 // Post Condition:  Prints the first n elements of a[] to os, epl elements per line
 void printArr(const double a[], int n, int epl = 5, ostream &os = cout);

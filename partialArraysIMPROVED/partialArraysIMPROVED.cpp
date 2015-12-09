@@ -9,12 +9,12 @@
 #include <string>
 using namespace std;
 
-//  Pre Condition:  n <= to the PHYSICAL size of a[]
+//  Pre Condition:  n <= to the LOGICAL size of a[]
 //					os must be a valid open output stream
 // Post Condition:  Prints the first n elements of a[] to os, each string on a new line and tabbed in 8 spaces
 void printTitle(const string a[], int n, ostream &os = cout);
 
-//  Pre Condition:  n <= to the PHYSICAL size of a[]
+//  Pre Condition:  n <= to the LOGICAL size of a[]
 //					os must be a valid open output stream
 // Post Condition:  Prints the first n elements of a[] to os, epl elements per line
 void printArr(const double a[], int n, int epl = 5, ostream &os = cout);
@@ -41,17 +41,17 @@ double getNumLessThan(double n);
 //					Restores the cin object if needed
 double getNum();
 
-//  Pre Condition:	n <= to the PHYSICAL size of a[]
+//  Pre Condition:	n <= to the LOGICAL size of a[]
 //					n > 0
 // Post Condition:	Returns the index of largest element
 int getIndexOfMax(double a[], int n);
 
-//  Pre Condition:	n <= to the PHYSICAL size of a[]
+//  Pre Condition:	n <= to the LOGICAL size of a[]
 //					n > 0
 // Post Condition:	Returns the index of smallest element
 int getIndexOfMin(double a[], int n);
 
-//  Pre Condition:	n is logical size of a[]
+//  Pre Condition:	n is LOGICAL size of a[]
 //					n > 0
 // Post Condition:	Returns the average of all elements
 double getAvg(double a[], int n);
