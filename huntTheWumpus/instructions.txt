@@ -9,8 +9,7 @@
         If you enter, you fall into the pit (and lose!)
 
     Giant Bats - Two other rooms have giant bats. 
-        If you enter, the bat grabs you and deposits you in another room 
-        at random. (Which might be troublesome.)
+        If you enter, the bat grabs you and returns you to the start.
 
     WUMPUS:
     The Wumpus is not bothered by the hazards (he has sucker feet and  
