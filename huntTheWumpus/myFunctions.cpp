@@ -151,23 +151,23 @@ int startHunt(int const map[][3], int player, int wumpus, int bat1, int bat2, in
 
 	while (true) {
 		if (player == wumpus) {
-			cout << "\n\tYou awakened the Wumpus. He eats you. \n\tYou lose.";
+			cout << "\n\n\tYou awakened the Wumpus. He eats you. \n\tYou lose.";
 			return -1;
 		}
 		else if (player == pit1 || player == pit2) {
-			cout << "\n\tYou fell into a bottomless pit. \n\tYou lose... eventually...";
+			cout << "\n\n\tYou fell into a bottomless pit. \n\tYou lose... eventually...";
 			return 0;
 		}
 
-		/*if (isWumpusNear(player, wumpus)) 
-			cout << "\n\tYou smell the unmistakable stench of a Wumpus";
+		if (isWumpusNear(player, wumpus)) 
+			cout << "\n\n\tYou smell the unmistakable stench of a Wumpus";
+
+		if (isBatNear(player, bat1, bat2))
+			cout << "\n\n\tYou hear the flapping of large wings";
 
 		if (isPitNear(player, pit1, pit2))
-			cout << "\n\tYou smell the unmistakable stench of a Wumpus";
+			cout << "\n\n\tYou feel an ominous breeze";
 
-		if (isBatNear(player, wumpus))
-			cout << "\n\tYou smell the unmistakable stench of a Wumpus";
-
-		cout << "You "*/
+		cout << "\n\nYou are in room " << player;
 	}
 }
