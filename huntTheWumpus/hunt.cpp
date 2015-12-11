@@ -20,7 +20,7 @@ void main() {
 		SIZE_MENU = 4,
 		SIZE_ROOMS = 21,		// size in 1 more than used for map, done for alignment
 		SIZE_EXITS = 3,
-		SIZE_INSTR = 38;		// num of lines in instructions.txt
+		SIZE_INSTR = 37;		// num of lines in instructions.txt
 
 	int gamesPld,
 		moveCounter, 
