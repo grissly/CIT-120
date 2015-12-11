@@ -76,11 +76,15 @@ void printStats(int gamesPld, const int whoWon[], const double winPct[], const d
 
 void load2DArr(int map[][SIZE_EXITS], int n, int m);
 
-void print2DArr(int map[][SIZE_EXITS], int n, int m, ostream &os = cout); // for testing
+void print2DArr(int const map[][SIZE_EXITS], int n, int m, ostream &os = cout); // for testing
 
 //  Pre Condition:  All ints must be in range [1, 20]
 // Post Condition:  Prints out game state
 //					Prints out directions and prompts for player choices
 //					Sets count to the number of moves of game
 //					Returns who won: -1 = Wumpus, 0 = Pit, 1 = Player
-int startHunt(int const map[][3], int player, int wumpus, int bat1, int bat2, int pit1, int pit2, int &count);
+int startHunt(int const map[][SIZE_EXITS], int player, int wumpus, int bat1, int bat2, int pit1, int pit2, int &count);
+
+bool isHazardNear(int const map[][SIZE_EXITS], int p, int h);
+
+void printRoomAndExits(int const map[][SIZE_EXITS], int p);

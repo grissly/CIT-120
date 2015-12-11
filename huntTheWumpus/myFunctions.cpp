@@ -139,14 +139,14 @@ void load2DArr(int map[][SIZE_EXITS], int const n, int const m) {
 			map[i][j] = tempMap[i][j];
 }
 
-void print2DArr(int map[][3], int n, int m, ostream &os) {
+void print2DArr(int map[][SIZE_EXITS], int n, int m, ostream &os) {
 	cout << "\n";
 	for (int i = 0; i < n; i++) 
 		for (int j = 0; j < m; j++) 
 			cout << "\t" << map[i][j] << (j % m == m - 1 ? "\n" : ", ");
 }
 
-int startHunt(int const map[][3], int player, int wumpus, int bat1, int bat2, int pit1, int pit2, int &count) {
+int startHunt(int const map[][SIZE_EXITS], int player, int wumpus, int bat1, int bat2, int pit1, int pit2, int &count) {
 	count = 0;
 
 	while (true) {
@@ -159,15 +159,38 @@ int startHunt(int const map[][3], int player, int wumpus, int bat1, int bat2, in
 			return 0;
 		}
 
-		if (isWumpusNear(player, wumpus)) 
+		if (isHazardNear(map, player, wumpus)) 
 			cout << "\n\n\tYou smell the unmistakable stench of a Wumpus";
 
-		if (isBatNear(player, bat1, bat2))
+		if (isHazardNear(map, player, bat1) || isHazardNear(map, player, bat2))
 			cout << "\n\n\tYou hear the flapping of large wings";
 
-		if (isPitNear(player, pit1, pit2))
+		if (isHazardNear(map, player, pit1) || isHazardNear(map, player, pit2))
 			cout << "\n\n\tYou feel an ominous breeze";
 
-		cout << "\n\nYou are in room " << player;
+		cout << endl << endl;
+		printRoomAndExits(map, player);
+		cout << endl << endl;
+
+		system("pause");
+	}
+}
+
+bool isHazardNear(int const map[][SIZE_EXITS], int p, int h) {
+	for (int i = 0; i < SIZE_EXITS; i++) {
+		if (h == map[p][i])
+			return true;
+	}
+
+	return false;
+}
+
+void printRoomAndExits(int const map[][SIZE_EXITS], int p) {
+	cout
+		<< "\tYou are in room " << p << endl
+		<< "\tYou may go to rooms:" << endl;
+
+	for (int i = 0; i < SIZE_EXITS; i++) {
+		cout << "\t" << map[p][i];
 	}
 }

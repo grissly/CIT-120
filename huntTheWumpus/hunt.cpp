@@ -23,7 +23,8 @@ void main() {
 		SIZE_INSTR = 37;		// num of lines in instructions.txt
 
 	int gamesPld,
-		moveCounter, 
+		moveCounter,
+		winner,
 		map[SIZE_ROOMS][SIZE_EXITS],
 		whoWon[SIZE_STATS],
 		posPlayer = 1,
@@ -51,10 +52,10 @@ void main() {
 		},
 
 		menuArr[SIZE_MENU] = {
-				"\t1] View Instructions",
-				"\t2] View Statistics",
-				"\t3] Play Game",
-				"\t4] Exit Program"
+			"\t1] View Instructions",
+			"\t2] View Statistics",
+			"\t3] Play Game",
+			"\t4] Exit Program"
 		};
 
 	ifstream
@@ -115,12 +116,15 @@ void main() {
 					loadStringArrayFromFile(instrArray, SIZE_INSTR, ifsInstr, instrLoaded);
 					ifsInstr.close();
 
-					cout << "\n\tDone loading statistics\n";
+					cout << "\n\tDone loading statistics\n\n";
 				}
 
 				system("pause");
 				system("cls");
-				//startHunt(posPlayer, posWumpus, posBat1, posBat2, posPit1, posPit2, moveCounter);
+
+				load2DArr(map, SIZE_ROOMS, SIZE_EXITS);
+				winner = startHunt(map, posPlayer, posWumpus, posBat1, posBat2, posPit1, posPit2, moveCounter);
+
 				break;
 			case 4:			// EXIT
 				cout << "\nThank you for using my program.\n\n";
