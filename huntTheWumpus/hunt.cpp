@@ -11,25 +11,25 @@ using namespace std;
 
 void main() {
 	bool
-		instructionsLoaded = false,
+		mapLoaded = false,
+		instrLoaded = false,
 		statsLoaded = false;
-		// mapLoaded = false;
 
 	int const 
-		ROOMS = 21,
-		EXITS = 3,
-		STATS = 3,
-		TITLE = 4,
-		INSTRUCTIONS = 38;
+		SIZE_ROOMS = 21,
+		SIZE_EXITS = 3,
+		SIZE_STATS = 3,
+		SIZE_TITLE = 4,
+		SIZE_INSTR = 38;
 
 	int gamesPlayed,
-		whoWon[STATS],
+		whoWon[SIZE_STATS],
 		posPlayer = 1,
 		posWumpus = 6,
 		posBat1 = 3,
 		posBat2 = 10,
 		posPit1 = 13,
-		posPit2 = 16,
+		posPit2 = 16/*,
 		caves[ROOMS][EXITS] = {
 			{ 0, 0, 0 },
 			{ 2, 4, 19 },
@@ -52,31 +52,68 @@ void main() {
 			{ 13, 17, 20 },
 			{ 1, 16, 20 },
 			{ 3, 18, 19 }
-		};
+		}*/;
 
 	double
-		whoWonPercent[STATS],
-		numMoves[STATS];
+		whoWonPercent[SIZE_STATS],
+		numMoves[SIZE_STATS];
 
-	string titleArr[TITLE] = {
-		"       CIT-120 Capstone Project       ",
-		"           Hunt the Wumpus!           ",
-		"             by J. Guerra             ",
-		"Game oringinally by Gregory Yob (1973)"
-	};
+	string
+		mapFilename = "map.txt",
+		instrFilename = "instructions.txt",
+		statsFilename = "stats.txt",
+		instrArray[SIZE_INSTR],
+		titleArr[SIZE_TITLE] = {
+			"\t\t    CIT-120 Capstone Project    ",
+			"\t\t          by J. Guerra          ",
+			"\t\t        Hunt the Wumpus!        ",
+			"\t\tOriginally by Gregory Yob (1973)" 
+		};
+
+	ifstream
+		ifsMap,
+		ifsInstr,
+		ifsStats;
+
+	ofstream
+		updateStats;
 
 	system("color 2f");		// console fun :D | 2 = green background, f = white text
 
 	// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ //
 
-	printStringArr(titleArr, TITLE);
+	while (true) {
+		printStringArr(titleArr, SIZE_TITLE);
 
-	cout 
-		<< "\n\t1] Instructions"
-		<< "\n\t2] Statistics"
-		<< "\n\t3] Play"
-		<< "\n\t4] Exit";
+		cout 
+			<< endl << endl
+			<< "\n\t1] Instructions"
+			<< "\n\t2] Statistics"
+			<< "\n\t3] Play"
+			<< "\n\t4] Exit"
+			<< endl << endl
+			<< "Please make a selection: ";
 
-	loadCaves(caves);
+		switch (getIntInRange(1, 4)) {
+			case 1:			// instructions
+				if (!instrLoaded) {
+					ifsInstr.open(instrFilename);
+					loadStringArrayFromFile(instrArray, SIZE_INSTR, ifsInstr, instrLoaded);
+				}
 
+				system("cls");
+				printStringArr(instrArray, SIZE_INSTR);
+				cout << endl << endl;
+				break;
+			case 2:			// Stats
+			case 3:			// Play
+			case 4:			// EXIT
+				cout << "\nThank you for using my program.\n\n";
+				system("pause");
+				exit(0);
+		}
+
+		system("pause");
+		system("cls");
+	}
 }

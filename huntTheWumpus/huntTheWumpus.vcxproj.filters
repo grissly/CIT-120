@@ -26,6 +26,12 @@
     <Text Include="instructions.txt">
       <Filter>Resource Files</Filter>
     </Text>
+    <Text Include="map.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="stats.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="myHeader.h">
