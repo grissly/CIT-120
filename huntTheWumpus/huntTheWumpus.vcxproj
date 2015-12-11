@@ -77,9 +77,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="hunt.cpp" />
+    <ClCompile Include="myFunctions.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="instructions.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="myHeader.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

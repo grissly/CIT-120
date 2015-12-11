@@ -22,17 +22,17 @@ If you wake the Wumpus, he will eat you (and you lose!)
 YOU:
 Each turn you will have the option to move or shoot a crooked arrow
     MOVING: you may take any tunnel connecting to your current room
-	(be warned, not every room is safe)
+        (be warned, not every room is safe)
     ARROWS: You have ONE arrow. You lose if you shoot and miss the WUMPUS
-	(DON'T MISS). Your arrow can be shot into any adjacent room. 
-	If the arrow hits the Wumpus, you win.
-	If you miss, you will wake the Wumpus and he will eat you!
+        (DON'T MISS). Your arrow can be shot into any adjacent room. 
+        If the arrow hits the Wumpus, you win.
+        If you miss, you will wake the Wumpus and he will eat you!
 
     WARNINGS:
-	When you are in a room adjacent to the Wumpus or a hazard, 
-	the computer says:
-	    Wumpus - 'You smell the unmistakable stench of the Wumpus'
-	    Bat    - 'You hear the flapping of large wings'
-	    Pit    - 'You feel cold draft'
+        When you are in a room adjacent to the Wumpus or a hazard, 
+        the computer says:
+            Wumpus - 'You smell the unmistakable stench of the Wumpus'
+            Bat    - 'You hear the flapping of large wings'
+            Pit    - 'You feel an ominous breeze'
 
 ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 

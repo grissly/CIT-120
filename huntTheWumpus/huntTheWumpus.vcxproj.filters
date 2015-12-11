@@ -18,10 +18,18 @@
     <ClCompile Include="hunt.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="myFunctions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="instructions.txt">
       <Filter>Resource Files</Filter>
     </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="myHeader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
