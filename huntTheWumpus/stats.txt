@@ -12,4 +12,4 @@ Hunt the Wumpus Game Statistics
 
 	Moves Per Game:
 	Least	Most	Average
-	0 	0 	0.0
+	0	0	0.0
