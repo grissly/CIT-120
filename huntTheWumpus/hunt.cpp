@@ -11,52 +11,23 @@ using namespace std;
 
 void main() {
 	bool
-		mapLoaded = false,
 		instrLoaded = false,
 		statsLoaded = false;
-		//gamesPldRead = false,
-		//whoWonLoaded = false,
-		//winPctLoaded = false,
-		//numMvsLoaded = false;
 
 	int const 
-		SIZE_ROOMS = 21,		// size in 1 more than used for map, done for alignment
-		SIZE_EXITS = 3,
-		SIZE_STATS = 3,			// most stats are grouped in 3s with similar stats
+		SIZE_STATS = 3,			// most stats are grouped into arr[3] with other similar stats
 		SIZE_TITLE = 4,
 		SIZE_INSTR = 38;		// num of lines in instructions.txt
 
 	int gamesPld,
+		moveCounter,
 		whoWon[SIZE_STATS],
 		posPlayer = 1,
 		posWumpus = 6,
 		posBat1 = 3,
 		posBat2 = 10,
 		posPit1 = 13,
-		posPit2 = 16/*,
-		caves[ROOMS][EXITS] = {
-			{ 0, 0, 0 },
-			{ 2, 4, 19 },
-			{ 1, 3, 6 },
-			{ 2, 8, 20 },
-			{ 1, 5, 9 },
-			{ 4, 6, 11 },
-			{ 2, 5, 7 },
-			{ 6, 8, 12 },
-			{ 3, 7, 13 },
-			{ 4, 10, 16 },
-			{ 9, 11, 14 },
-			{ 5, 10, 12 },
-			{ 7, 11, 15 },
-			{ 8, 15, 18 },
-			{ 10, 15, 17 },
-			{ 12, 13, 14 },
-			{ 9, 17, 19 },
-			{ 14, 16, 18 },
-			{ 13, 17, 20 },
-			{ 1, 16, 20 },
-			{ 3, 18, 19 }
-		}*/;
+		posPit2 = 16;
 
 	double
 		winPct[SIZE_STATS],
@@ -75,7 +46,6 @@ void main() {
 		};
 
 	ifstream
-		ifsMap,
 		ifsInstr,
 		ifsStats;
 
@@ -96,9 +66,13 @@ void main() {
 		switch (getIntInRange(1, 4)) {
 			case 1:			// instructions
 				if (!instrLoaded) {
+					cout << "\n Loading statistics...";
+					
 					ifsInstr.open(instrFilename);
 					loadStringArrayFromFile(instrArray, SIZE_INSTR, ifsInstr, instrLoaded);
 					ifsInstr.close();
+
+					cout << "Done loading statistics";
 				}
 
 				system("cls");
@@ -116,6 +90,26 @@ void main() {
 				cout << endl << endl;
 				break;
 			case 3:			// Play
+				cout
+					<< "\n\tPlease finish each game."
+					<< "\n\tStatistics will be automatically updated after each game."
+					<< "\n\tYou may view statistics in main menu or in \"stats.txt\""
+					<< endl;
+
+				if (!instrLoaded) {
+					cout << "\n\tLoading statistics...";
+
+					ifsInstr.open(instrFilename);
+					loadStringArrayFromFile(instrArray, SIZE_INSTR, ifsInstr, instrLoaded);
+					ifsInstr.close();
+
+					cout << "\n\tDone loading statistics\n";
+				}
+
+				system("pause");
+				system("cls");
+				startHunt(posPlayer, posWumpus, posBat1, posBat2, posPit1, posPit2, moveCounter);
+				break;
 			case 4:			// EXIT
 				cout << "\nThank you for using my program.\n\n";
 				system("pause");

@@ -2,6 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <iomanip>
 using namespace std;
 
 void printMenu() {
@@ -92,47 +93,11 @@ void loadStats(int &gamesPlayed, int whoWon[], double whoWonPercent[],
 	isLoaded = true;
 }
 
-/*
-int readInt(ifstream &ifs, bool &isLoaded) {
-	string trash;		// for reading in lines that I don't need
-	int x;
-
-	getline(ifs, trash, ':');
-	ifs >> x;
-
-	isLoaded = true;
-	return x;
-}
-
-void loadIntArr(int a[], int n, ifstream &ifs, bool &isLoaded) {
-	string trash;		// for reading in lines that I don't need
-
-	getline(ifs, trash, ':');
-	getline(ifs, trash);
-	for (int i = 0; i < n; i++)
-		ifs >> a[i];
-
-	isLoaded = true;
-}
-
-void loadDoubleArr(double a[], int n, ifstream &ifs, bool &isLoaded) {
-	string trash;		// for reading in lines that I don't need
-
-	getline(ifs, trash, ':');
-	getline(ifs, trash);
-	for (int i = 0; i < n; i++) {
-		ifs >> a[i];
-		ifs.ignore();	// for discarding '%'
-	}
-
-	isLoaded = true;
-}
-*/
-
 void printStats(int gamesPld, const int whoWon[], const double winPct[],
 	const double numMvs[], int n, ostream &os) {
 
 	os
+		<< fixed << setprecision(1) 
 		<< "\nHunt the Wumpus Game Statistics"
 		<< "\n\n\tGames Played: " << gamesPld
 		<< "\n\n\tWho Won:"
@@ -153,5 +118,27 @@ void printStats(int gamesPld, const int whoWon[], const double winPct[],
 		<< "\n\tLeast\tMost\tAverage\n"
 		<< "\t" << int(numMvs[0])
 		<< "\t" << int(numMvs[1])
-		<< "\t" << numMvs[0];
+		<< "\t" << numMvs[2];
+}
+
+int startHunt(int player, int wumpus, int bat1, int bat2, int pit1, int pit2, int &count) {
+	count = 0;
+
+	while (true) {
+		if (player == wumpus) {
+			cout << "\n\tYou awakened the Wumpus. He eats you. \n\tYou lose.";
+			return -1;
+		}
+		else if (player == pit1 || player == pit2) {
+			cout << "\n\tYou fell into a bottomless pit. \n\tYou lose... eventually...";
+			return 0;
+		}
+
+		if (isWumpusNear(player, wumpus)) 
+			cout << "\n\tYou smell the unmistakable stench of a Wumpus";
+
+		if (isPitNear(player, wumpus))
+			cout << "\n\tYou smell the unmistakable stench of a Wumpus";
+
+	}
 }
