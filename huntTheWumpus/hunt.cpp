@@ -16,11 +16,15 @@ void main() {
 
 	int const 
 		SIZE_STATS = 3,			// most stats are grouped into arr[3] with other similar stats
-		SIZE_TITLE = 4,
+		SIZE_TITLE = 4, 
+		SIZE_MENU = 4,
+		SIZE_ROOMS = 21,		// size in 1 more than used for map, done for alignment
+		SIZE_EXITS = 3,
 		SIZE_INSTR = 38;		// num of lines in instructions.txt
 
 	int gamesPld,
-		moveCounter,
+		moveCounter, 
+		map[SIZE_ROOMS][SIZE_EXITS],
 		whoWon[SIZE_STATS],
 		posPlayer = 1,
 		posWumpus = 6,
@@ -38,11 +42,19 @@ void main() {
 		instrFilename = "instructions.txt",
 		statsFilename = "stats.txt",
 		instrArray[SIZE_INSTR],
+
 		titleArr[SIZE_TITLE] = {
 			"\t\t    CIT-120 Capstone Project    ",
 			"\t\t          by J. Guerra          ",
 			"\t\t        Hunt the Wumpus!        ",
 			"\t\tOriginally by Gregory Yob (1973)" 
+		},
+
+		menuArr[SIZE_MENU] = {
+				"\t1] View Instructions",
+				"\t2] View Statistics",
+				"\t3] Play Game",
+				"\t4] Exit Program"
 		};
 
 	ifstream
@@ -60,10 +72,10 @@ void main() {
 		printStringArr(titleArr, SIZE_TITLE);
 
 		cout << endl << endl;
-		printMenu();
+		printStringArr(menuArr, SIZE_MENU);
 		cout << "\n\nPlease make a selection: ";
 
-		switch (getIntInRange(1, 4)) {
+		switch (getIntInRange(1, 5)) {
 			case 1:			// instructions
 				if (!instrLoaded) {
 					cout << "\n Loading statistics...";
@@ -108,12 +120,26 @@ void main() {
 
 				system("pause");
 				system("cls");
-				startHunt(posPlayer, posWumpus, posBat1, posBat2, posPit1, posPit2, moveCounter);
+				//startHunt(posPlayer, posWumpus, posBat1, posBat2, posPit1, posPit2, moveCounter);
 				break;
 			case 4:			// EXIT
 				cout << "\nThank you for using my program.\n\n";
 				system("pause");
 				exit(0);
+			/*
+			case 5:
+				cout 
+					<< "\n\tSecret Option: Testing ;)"
+					<< "\n\tLoading Map....";
+
+				load2DArr(map, SIZE_ROOMS, SIZE_EXITS);
+
+				cout 
+					<< "\n\tMap loaded :D"
+					<< "\n\tcalling print2DArr()";
+
+				print2DArr(map, SIZE_ROOMS, SIZE_EXITS);
+			*/
 		}
 
 		system("pause");

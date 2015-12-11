@@ -5,14 +5,6 @@
 #include <iomanip>
 using namespace std;
 
-void printMenu() {
-	cout
-		<< "\n\t1] View Instructions"
-		<< "\n\t2] View Statistics"
-		<< "\n\t3] Play Game"
-		<< "\n\t4] Exit Program";
-}
-
 void printStringArr(const string a[], int n, ostream &os) {
 	for (int i = 0; i < n; i++)
 		os << "\n" << a[i];
@@ -64,10 +56,7 @@ void loadStringArrayFromFile(string a[], int n, ifstream &ifs, bool &isLoaded) {
 	isLoaded = true;
 }
 
-void loadStats(int &gamesPlayed, int whoWon[], double whoWonPercent[],
-	double numMoves[], int n, ifstream &ifs, bool &isLoaded) {
-	
-	string trash;		// for reading in lines that I don't need
+void loadStats(int &gamesPlayed, int whoWon[], double whoWonPercent[], double numMoves[], int n, ifstream &ifs, bool &isLoaded) {
 
 	while (ifs.peek() < '0' || ifs.peek() > '9')
 		ifs.ignore();
@@ -93,8 +82,7 @@ void loadStats(int &gamesPlayed, int whoWon[], double whoWonPercent[],
 	isLoaded = true;
 }
 
-void printStats(int gamesPld, const int whoWon[], const double winPct[],
-	const double numMvs[], int n, ostream &os) {
+void printStats(int gamesPld, const int whoWon[], const double winPct[], const double numMvs[], int n, ostream &os) {
 
 	os
 		<< fixed << setprecision(1) 
@@ -121,7 +109,44 @@ void printStats(int gamesPld, const int whoWon[], const double winPct[],
 		<< "\t" << numMvs[2];
 }
 
-int startHunt(int player, int wumpus, int bat1, int bat2, int pit1, int pit2, int &count) {
+void load2DArr(int map[][SIZE_EXITS], int const n, int const m) {
+	int tempMap[21][3] = {
+		{ 0, 0, 0 },		// room not actually used
+		{ 2, 4, 19 },
+		{ 1, 3, 6 },
+		{ 2, 8, 20 },
+		{ 1, 5, 9 },
+		{ 4, 6, 11 },
+		{ 2, 5, 7 },
+		{ 6, 8, 12 },
+		{ 3, 7, 13 },
+		{ 4, 10, 16 },
+		{ 9, 11, 14 },
+		{ 5, 10, 12 },
+		{ 7, 11, 15 },
+		{ 8, 15, 18 },
+		{ 10, 15, 17 },
+		{ 12, 13, 14 },
+		{ 9, 17, 19 },
+		{ 14, 16, 18 },
+		{ 13, 17, 20 },
+		{ 1, 16, 20 },
+		{ 3, 18, 19 }
+	};
+
+	for (int i = 0; i < n; i++)
+		for (int j = 0; j < m; j++)
+			map[i][j] = tempMap[i][j];
+}
+
+void print2DArr(int map[][3], int n, int m, ostream &os) {
+	cout << "\n";
+	for (int i = 0; i < n; i++) 
+		for (int j = 0; j < m; j++) 
+			cout << "\t" << map[i][j] << (j % m == m - 1 ? "\n" : ", ");
+}
+
+int startHunt(int const map[][3], int player, int wumpus, int bat1, int bat2, int pit1, int pit2, int &count) {
 	count = 0;
 
 	while (true) {
@@ -134,11 +159,15 @@ int startHunt(int player, int wumpus, int bat1, int bat2, int pit1, int pit2, in
 			return 0;
 		}
 
-		if (isWumpusNear(player, wumpus)) 
+		/*if (isWumpusNear(player, wumpus)) 
 			cout << "\n\tYou smell the unmistakable stench of a Wumpus";
 
-		if (isPitNear(player, wumpus))
+		if (isPitNear(player, pit1, pit2))
 			cout << "\n\tYou smell the unmistakable stench of a Wumpus";
 
+		if (isBatNear(player, wumpus))
+			cout << "\n\tYou smell the unmistakable stench of a Wumpus";
+
+		cout << "You "*/
 	}
 }
