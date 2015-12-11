@@ -76,7 +76,7 @@ void printStats(int gamesPld, const int whoWon[], const double winPct[], const d
 
 void load2DArr(int map[][SIZE_EXITS], int n, int m);
 
-void print2DArr(int map[][SIZE_EXITS], int n, int m, ostream &os = cout);
+void print2DArr(int map[][SIZE_EXITS], int n, int m, ostream &os = cout); // for testing
 
 //  Pre Condition:  All ints must be in range [1, 20]
 // Post Condition:  Prints out game state
