@@ -14,6 +14,10 @@ void main() {
 		mapLoaded = false,
 		instrLoaded = false,
 		statsLoaded = false;
+		//gamesPldRead = false,
+		//whoWonLoaded = false,
+		//winPctLoaded = false,
+		//numMvsLoaded = false;
 
 	int const 
 		SIZE_ROOMS = 21,		// size in 1 more than used for map, done for alignment
@@ -22,7 +26,7 @@ void main() {
 		SIZE_TITLE = 4,
 		SIZE_INSTR = 38;		// num of lines in instructions.txt
 
-	int gamesPlayed,
+	int gamesPld,
 		whoWon[SIZE_STATS],
 		posPlayer = 1,
 		posWumpus = 6,
@@ -55,8 +59,8 @@ void main() {
 		}*/;
 
 	double
-		whoWonPercent[SIZE_STATS],
-		numMoves[SIZE_STATS];		// will display some stats as ints
+		winPct[SIZE_STATS],
+		numMvs[SIZE_STATS];		// will display some stats as ints
 
 	string
 		mapFilename = "map.txt",
@@ -76,7 +80,7 @@ void main() {
 		ifsStats;
 
 	ofstream
-		updateStats;
+		ofsStats;
 
 	system("color 2f");		// set console color: 2 (green background), f (white text)
 
@@ -103,9 +107,14 @@ void main() {
 				break;
 			case 2:			// Stats
 				if (!statsLoaded) {
-					ifsInstr.open(instrFilename);
-					loadStringArrayFromFile(instrArray, SIZE_INSTR, ifsInstr, instrLoaded);
+					ifsStats.open(statsFilename);
+					loadStats(gamesPld, whoWon, winPct, numMvs, SIZE_STATS, ifsStats, statsLoaded);
+					ifsStats.close();
 				}
+
+				printStats(gamesPld, whoWon, winPct, numMvs, SIZE_STATS);
+				cout << endl << endl;
+				break;
 			case 3:			// Play
 			case 4:			// EXIT
 				cout << "\nThank you for using my program.\n\n";
