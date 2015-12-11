@@ -8,6 +8,10 @@ using namespace std;
 // Post Condition:  Prints the first n elements of a[] to os
 void printStringArr(const string a[], int n, ostream &os = cout);
 
+//  Pre Condition:  NONE
+// Post Condition:  Prints the Menu to the console
+void printMenu();
+
 //  Pre Condition:	start <= end
 // Post Condition:	Returns a valid integer in range [start, end]
 //					Prints descriptive error messgaes

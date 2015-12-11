@@ -16,11 +16,11 @@ void main() {
 		statsLoaded = false;
 
 	int const 
-		SIZE_ROOMS = 21,
+		SIZE_ROOMS = 21,		// size in 1 more than used for map, done for alignment
 		SIZE_EXITS = 3,
-		SIZE_STATS = 3,
+		SIZE_STATS = 3,			// most stats are grouped in 3s with similar stats
 		SIZE_TITLE = 4,
-		SIZE_INSTR = 38;
+		SIZE_INSTR = 38;		// num of lines in instructions.txt
 
 	int gamesPlayed,
 		whoWon[SIZE_STATS],
@@ -56,7 +56,7 @@ void main() {
 
 	double
 		whoWonPercent[SIZE_STATS],
-		numMoves[SIZE_STATS];
+		numMoves[SIZE_STATS];		// will display some stats as ints
 
 	string
 		mapFilename = "map.txt",
@@ -78,27 +78,23 @@ void main() {
 	ofstream
 		updateStats;
 
-	system("color 2f");		// console fun :D | 2 = green background, f = white text
+	system("color 2f");		// set console color: 2 (green background), f (white text)
 
 	// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ //
 
 	while (true) {
 		printStringArr(titleArr, SIZE_TITLE);
 
-		cout 
-			<< endl << endl
-			<< "\n\t1] Instructions"
-			<< "\n\t2] Statistics"
-			<< "\n\t3] Play"
-			<< "\n\t4] Exit"
-			<< endl << endl
-			<< "Please make a selection: ";
+		cout << endl << endl;
+		printMenu();
+		cout << "\n\nPlease make a selection: ";
 
 		switch (getIntInRange(1, 4)) {
 			case 1:			// instructions
 				if (!instrLoaded) {
 					ifsInstr.open(instrFilename);
 					loadStringArrayFromFile(instrArray, SIZE_INSTR, ifsInstr, instrLoaded);
+					ifsInstr.close();
 				}
 
 				system("cls");
@@ -106,6 +102,10 @@ void main() {
 				cout << endl << endl;
 				break;
 			case 2:			// Stats
+				if (!statsLoaded) {
+					ifsInstr.open(instrFilename);
+					loadStringArrayFromFile(instrArray, SIZE_INSTR, ifsInstr, instrLoaded);
+				}
 			case 3:			// Play
 			case 4:			// EXIT
 				cout << "\nThank you for using my program.\n\n";

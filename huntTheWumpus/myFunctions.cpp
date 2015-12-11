@@ -9,6 +9,14 @@ void printStringArr(const string a[], int n, ostream &os) {
 		os << "\n" << a[i];
 }
 
+void printMenu() {
+	cout
+		<< "\n\t1] View Instructions"
+		<< "\n\t2] View Statistics"
+		<< "\n\t3] Play Game"
+		<< "\n\t4] Exit Program";
+}
+
 int getIntInRange(int start, int end) {
 	int x = getInt();
 
