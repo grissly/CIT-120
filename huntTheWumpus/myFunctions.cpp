@@ -139,7 +139,7 @@ void load2DArr(int map[][SIZE_EXITS], int const n, int const m) {
 			map[i][j] = tempMap[i][j];
 }
 
-void print2DArr(int map[][SIZE_EXITS], int n, int m, ostream &os) {
+void print2DArr(int const map[][SIZE_EXITS], int n, int m, ostream &os) {
 	cout << "\n";
 	for (int i = 0; i < n; i++) 
 		for (int j = 0; j < m; j++) 
