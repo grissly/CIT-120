@@ -88,3 +88,7 @@ int startHunt(int const map[][SIZE_EXITS], int player, int wumpus, int bat1, int
 bool isHazardNear(int const map[][SIZE_EXITS], int p, int h);
 
 void printRoomAndExits(int const map[][SIZE_EXITS], int p);
+
+char getMorS();
+
+int getValidExit(int const map[][SIZE_EXITS], int p);

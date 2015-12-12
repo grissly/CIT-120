@@ -11,6 +11,7 @@ using namespace std;
 
 void main() {
 	bool
+		mapLoaded = false,
 		instrLoaded = false,
 		statsLoaded = false;
 
@@ -90,7 +91,6 @@ void main() {
 
 				system("cls");
 				printStringArr(instrArray, SIZE_INSTR);
-				cout << endl << endl;
 				break;
 			case 2:			// Stats
 				if (!statsLoaded) {
@@ -100,7 +100,6 @@ void main() {
 				}
 
 				printStats(gamesPld, whoWon, winPct, numMvs, SIZE_STATS);
-				cout << endl << endl;
 				break;
 			case 3:			// Play
 				cout
@@ -118,11 +117,18 @@ void main() {
 
 					cout << "\n\tDone loading statistics\n\n";
 				}
+				else
+					cout << "\n\n";
+				
+				if (!mapLoaded) {
+					cout << "\n\tLoading map...";
+					load2DArr(map, SIZE_ROOMS, SIZE_EXITS);
+					cout << "\n\tDone loading map\n\n";
+				}
 
 				system("pause");
 				system("cls");
 
-				load2DArr(map, SIZE_ROOMS, SIZE_EXITS);
 				winner = startHunt(map, posPlayer, posWumpus, posBat1, posBat2, posPit1, posPit2, moveCounter);
 
 				break;
@@ -146,6 +152,7 @@ void main() {
 			*/
 		}
 
+		cout << endl << endl;
 		system("pause");
 		system("cls");
 	}

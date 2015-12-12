@@ -85,7 +85,7 @@ void loadStats(int &gamesPlayed, int whoWon[], double whoWonPercent[], double nu
 void printStats(int gamesPld, const int whoWon[], const double winPct[], const double numMvs[], int n, ostream &os) {
 
 	os
-		<< fixed << setprecision(1) 
+		<< fixed << setprecision(1)
 		<< "\nHunt the Wumpus Game Statistics"
 		<< "\n\n\tGames Played: " << gamesPld
 		<< "\n\n\tWho Won:"
@@ -98,7 +98,7 @@ void printStats(int gamesPld, const int whoWon[], const double winPct[], const d
 		<< "\n\n\tWin Rate:"
 		<< "\n\tPlayer\tWumpus\tPit\n";
 
-	for (int i = 0; i < n; i++) 
+	for (int i = 0; i < n; i++)
 		os << "\t" << winPct[i] << "%";
 
 	os
@@ -141,47 +141,84 @@ void load2DArr(int map[][SIZE_EXITS], int const n, int const m) {
 
 void print2DArr(int const map[][SIZE_EXITS], int n, int m, ostream &os) {
 	cout << "\n";
-	for (int i = 0; i < n; i++) 
-		for (int j = 0; j < m; j++) 
+	for (int i = 0; i < n; i++)
+		for (int j = 0; j < m; j++)
 			cout << "\t" << map[i][j] << (j % m == m - 1 ? "\n" : ", ");
 }
 
 int startHunt(int const map[][SIZE_EXITS], int player, int wumpus, int bat1, int bat2, int pit1, int pit2, int &count) {
 	count = 0;
+	char move;
+	int target;
+	bool encounteredHazard;		// for printing some extra space
 
 	while (true) {
+		encounteredHazard = false;
+		cout << "~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~" << endl;
+
 		if (player == wumpus) {
 			cout << "\n\n\tYou awakened the Wumpus. He eats you. \n\tYou lose.";
 			return -1;
 		}
+		else if (player == bat1 || player == bat2) {
+			cout 
+				<< "\n\n\tA Giant Bat grabs you and carries you through the caves." 
+				<< "\n\tAfter what seems like a long time, it drops you in a new room."
+				<< "\n\tYou see the familiar features of the room you started in!";
+			encounteredHazard = true;
+			player = 1;		// back to start
+		}
 		else if (player == pit1 || player == pit2) {
-			cout << "\n\n\tYou fell into a bottomless pit. \n\tYou lose... eventually...";
+			cout << "\n\n\tYou fell into a bottomless pit. \n\tYou lose.";
 			return 0;
 		}
 
-		if (isHazardNear(map, player, wumpus)) 
-			cout << "\n\n\tYou smell the unmistakable stench of a Wumpus";
+		if (isHazardNear(map, player, wumpus)) {
+			cout << "\n\tYou smell the unmistakable stench of a Wumpus";
+			encounteredHazard = true;
+		}
 
-		if (isHazardNear(map, player, bat1) || isHazardNear(map, player, bat2))
-			cout << "\n\n\tYou hear the flapping of large wings";
+		if (isHazardNear(map, player, bat1) || isHazardNear(map, player, bat2)) {
+			cout << "\n\tYou hear the flapping of large wings";
+			encounteredHazard = true;
+		}
 
-		if (isHazardNear(map, player, pit1) || isHazardNear(map, player, pit2))
-			cout << "\n\n\tYou feel an ominous breeze";
+		if (isHazardNear(map, player, pit1) || isHazardNear(map, player, pit2)) {
+			cout << "\n\tYou feel an ominous breeze";
+			encounteredHazard = true;
+		}
 
-		cout << endl << endl;
+		cout << endl << (encounteredHazard ? "\n" : "");
 		printRoomAndExits(map, player);
-		cout << endl << endl;
+		cout << "\n\n\tDo you want to (M)ove or (S)hoot? ";
+		move = getMorS();
 
-		system("pause");
+		cout << "\tWhere do you want to " << (move == 'M' ? "move" : "shoot") << "? ";
+		target = getValidExit(map, player);
+
+		if (move == 'M') {
+			player = target;
+			cout << "\n";
+		}
+		else if (target == wumpus) {
+			cout << "\n\n\tYou killed the Wumpus! \n\tCongradulations, you win!";
+			return 1;
+		}
+		else {
+			cout
+				<< "\n\tYou missed the Wumpus!"
+				<< "\n\tYou awakened the Wumpus. He eats you. \n\tYou lose.";
+			return -1;
+		}
 	}
 }
 
 bool isHazardNear(int const map[][SIZE_EXITS], int p, int h) {
 	for (int i = 0; i < SIZE_EXITS; i++) {
-		if (h == map[p][i])
+		if (h == map[p][i]) {
 			return true;
+		}
 	}
-
 	return false;
 }
 
@@ -193,4 +230,30 @@ void printRoomAndExits(int const map[][SIZE_EXITS], int p) {
 	for (int i = 0; i < SIZE_EXITS; i++) {
 		cout << "\t" << map[p][i];
 	}
+}
+
+char getMorS() {
+	char c;
+
+	cin >> c;	cin.ignore(80, '\n');
+
+	while (c != 'M' && c != 'm' && c != 'S' && c != 's') {
+		cout << "\tPlease type 'M' for move or 'S' for shoot: ";
+		cin >> c;		cin.ignore(80, '\n');
+	}
+
+	return (c == 'm' ? 'M' : c == 's' ? 'S' : c);	// returns only capitals
+}
+
+int getValidExit(int const map[][SIZE_EXITS], int p) {
+	int t = getInt();
+
+	while (t != map[p][0] && t != map[p][1] && t != map[p][2]) {
+		cout
+			<< "\n\tYou " << (t == p ? "are already t" : "can't go there from ")
+			<< "here. Try again: ";
+		t = getInt();
+	}
+
+	return t;
 }
