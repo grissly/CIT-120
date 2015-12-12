@@ -88,14 +88,14 @@ void printStats(int gamesPld, const int whoWon[], const double winPct[], const d
 		<< "\nHunt the Wumpus Game Statistics"
 		<< "\n\n\tGames Played: " << gamesPld
 		<< "\n\n\tWho Won:"
-		<< "\n\tPlayer\tWumpus\tPit\n";
+		<< "\n\tWumpus\tPit\tPlayer\n";
 
 	for (int i = 0; i < n; i++)
 		os << "\t" << whoWon[i];
 
 	os
 		<< "\n\n\tWin Rate:"
-		<< "\n\tPlayer\tWumpus\tPit\n";
+		<< "\n\tWumpus\tPit\tPlayer\n";
 
 	for (int i = 0; i < n; i++)
 		os << "\t" << winPct[i] << "%";
@@ -194,6 +194,7 @@ int startHunt(int const map[][SIZE_EXITS], int player, int wumpus, int bat1, int
 
 		cout << "\tWhere do you want to " << (move == 'M' ? "move" : "shoot") << "? ";
 		target = getValidExit(map, player);
+		count++;
 
 		if (move == 'M') {
 			player = target;
@@ -255,4 +256,28 @@ int getValidExit(int const map[][SIZE_EXITS], int p) {
 	}
 
 	return t;
+}
+
+void updateStats(int &gamesPld, int whoWon[], double winPct[], double numMvs[], int n, int outcome, int lengthOfGame) {
+	if (gamesPld++ == 0) 
+		// if first game, no need to find shortest/longest game
+		// or avg game length
+		for (int i = 0; i < n; i++) 
+			numMvs[i] = lengthOfGame;
+	else {
+		if (lengthOfGame < numMvs[0])
+			numMvs[0] = lengthOfGame;
+		if (lengthOfGame > numMvs[1])
+			numMvs[1] = lengthOfGame;
+
+		// calc running avg
+		// newAvg = (oldAvg * prevTotalGamesPld + lengthOfMostRecentGame) / newTotalGamesPld
+		numMvs[2] = (numMvs[2] * double(gamesPld - 1) + double(lengthOfGame)) / double(gamesPld);
+	}
+	
+	// outcome is the winner code and will increment the int representing the entity that won the last game
+	whoWon[outcome + 1]++; 
+
+	for (int i = 0; i < n; i++)
+		winPct[i] = whoWon[i] / double(gamesPld) * 100;
 }

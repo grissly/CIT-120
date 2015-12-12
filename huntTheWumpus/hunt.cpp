@@ -11,23 +11,30 @@ using namespace std;
 
 void main() {
 	bool
-		mapLoaded = false,
-		instrLoaded = false,
+		mapLoaded = false,		// helps me avoid reading files 
+		instrLoaded = false,	// and loading arrays more than needed
 		statsLoaded = false;
 
-	int const 
-		SIZE_STATS = 3,			// most stats are grouped into arr[3] with other similar stats
-		SIZE_TITLE = 4, 
+	int const
+		SIZE_TITLE = 4,
 		SIZE_MENU = 4,
-		SIZE_ROOMS = 21,		// size in 1 more than used for map, done for alignment
-		SIZE_EXITS = 3,
-		SIZE_INSTR = 37;		// num of lines in instructions.txt
 
-	int gamesPld,
-		moveCounter,
-		winner,
+		SIZE_STATS = 3,			// most stats are grouped into arr[3] with other similar stats
+		SIZE_INSTR = 37,		// num of lines in instructions.txt
+		
+		SIZE_ROOMS = 21,		// size is 1 more than used for map, done for alignment
+		SIZE_EXITS = 3;
+
+	int 
 		map[SIZE_ROOMS][SIZE_EXITS],
+
+		gamesPld,				// stats
 		whoWon[SIZE_STATS],
+		
+		moveCounter,			// keeps track of 
+		winner,					// current game outcome
+
+		// game entities
 		posPlayer = 1,
 		posWumpus = 6,
 		posBat1 = 3,
@@ -37,12 +44,14 @@ void main() {
 
 	double
 		winPct[SIZE_STATS],
-		numMvs[SIZE_STATS];		// will display some stats as ints
+		numMvs[SIZE_STATS];	
 
 	string
 		mapFilename = "map.txt",
 		instrFilename = "instructions.txt",
 		statsFilename = "stats.txt",
+
+		// loaded by input file
 		instrArray[SIZE_INSTR],
 
 		titleArr[SIZE_TITLE] = {
@@ -105,12 +114,11 @@ void main() {
 				cout
 					<< "\n\tPlease finish each game."
 					<< "\n\tStatistics will be automatically updated after each game."
-					<< "\n\tYou may view statistics in main menu or in \"stats.txt\""
-					<< endl;
+					<< "\n\tYou may view statistics in main menu or in \"stats.txt\"";
 
 				// load stats if not done already
 				if (!statsLoaded) {
-					cout << "\n\tLoading statistics...";
+					cout << "\n\n\tLoading statistics...";
 					
 					ifsStats.open(statsFilename);
 					loadStats(gamesPld, whoWon, winPct, numMvs, SIZE_STATS, ifsStats, statsLoaded);
@@ -123,7 +131,7 @@ void main() {
 				
 				// load map if not done already
 				if (!mapLoaded) {
-					cout << "\n\tLoading map...";
+					cout << "\tLoading map...";
 					load2DArr(map, SIZE_ROOMS, SIZE_EXITS);
 					cout << "\n\tDone loading map\n\n";
 				}
@@ -135,28 +143,19 @@ void main() {
 				winner = startHunt(map, posPlayer, posWumpus, posBat1, posBat2, posPit1, posPit2, moveCounter);
 
 				// update stats
-
-
+				cout << "\n\n\tUpdating Statistics...";
+				updateStats(gamesPld, whoWon, winPct, numMvs, SIZE_STATS, winner, moveCounter);
+				cout 
+					<< "\n\tDone Updating Statistics..."
+					<< "\n\n\tSaving Statistics in \"stats.txt\"";
+				printStats(gamesPld, whoWon, winPct, numMvs, SIZE_STATS, ofsStats);
+				cout << "\n\tDone Saving Statistics...";
 
 				break;
 			case 4:			// EXIT
 				cout << "\nThank you for using my program.\n\n";
 				system("pause");
 				exit(0);
-			/*
-			case 5:
-				cout 
-					<< "\n\tSecret Option: Testing ;)"
-					<< "\n\tLoading Map....";
-
-				load2DArr(map, SIZE_ROOMS, SIZE_EXITS);
-
-				cout 
-					<< "\n\tMap loaded :D"
-					<< "\n\tcalling print2DArr()";
-
-				print2DArr(map, SIZE_ROOMS, SIZE_EXITS);
-			*/
 		}
 
 		cout << endl << endl;

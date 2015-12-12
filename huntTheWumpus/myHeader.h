@@ -92,3 +92,5 @@ void printRoomAndExits(int const map[][SIZE_EXITS], int p);
 char getMorS();
 
 int getValidExit(int const map[][SIZE_EXITS], int p);
+
+void updateStats(int &gamesPld, int whoWon[], double winPct[], double numMvs[], int n, int outcome, int lengthOfGame);
