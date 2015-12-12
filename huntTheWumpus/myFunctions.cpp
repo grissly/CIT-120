@@ -15,8 +15,7 @@ int getIntInRange(int start, int end) {
 
 	while (x < start || x > end) {
 		cout
-			<< "\a\tYour number must be "
-			<< (x < start ? "greater" : "less")
+			<< "\a\tYour number must be " << (x < start ? "greater" : "less")
 			<< " than or equal to "
 			<< (x < start ? start : end)
 			<< ". \n\tTry again: ";
@@ -56,11 +55,11 @@ void loadStringArrayFromFile(string a[], int n, ifstream &ifs, bool &isLoaded) {
 	isLoaded = true;
 }
 
-void loadStats(int &gamesPlayed, int whoWon[], double whoWonPercent[], double numMoves[], int n, ifstream &ifs, bool &isLoaded) {
+void loadStats(int &gamesPld, int whoWon[], double winPct[], double numMvs[], int n, ifstream &ifs, bool &isLoaded) {
 
 	while (ifs.peek() < '0' || ifs.peek() > '9')
 		ifs.ignore();
-	ifs >> gamesPlayed;
+	ifs >> gamesPld;
 
 	while (ifs.peek() < '0' || ifs.peek() > '9')
 		ifs.ignore();
@@ -70,14 +69,14 @@ void loadStats(int &gamesPlayed, int whoWon[], double whoWonPercent[], double nu
 	while (ifs.peek() < '0' || ifs.peek() > '9')
 		ifs.ignore();
 	for (int i = 0; i < n; i++) {
-		ifs >> whoWonPercent[i];
+		ifs >> winPct[i];
 		ifs.ignore();	// for discarding '%'
 	}
 
 	while (ifs.peek() < '0' || ifs.peek() > '9')
 		ifs.ignore();
 	for (int i = 0; i < n; i++)
-		ifs >> numMoves[i];
+		ifs >> numMvs[i];
 
 	isLoaded = true;
 }

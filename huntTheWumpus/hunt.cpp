@@ -101,25 +101,27 @@ void main() {
 
 				printStats(gamesPld, whoWon, winPct, numMvs, SIZE_STATS);
 				break;
-			case 3:			// Play
+			case 3:
 				cout
 					<< "\n\tPlease finish each game."
 					<< "\n\tStatistics will be automatically updated after each game."
 					<< "\n\tYou may view statistics in main menu or in \"stats.txt\""
 					<< endl;
 
-				if (!instrLoaded) {
+				// load stats if not done already
+				if (!statsLoaded) {
 					cout << "\n\tLoading statistics...";
-
-					ifsInstr.open(instrFilename);
-					loadStringArrayFromFile(instrArray, SIZE_INSTR, ifsInstr, instrLoaded);
-					ifsInstr.close();
+					
+					ifsStats.open(statsFilename);
+					loadStats(gamesPld, whoWon, winPct, numMvs, SIZE_STATS, ifsStats, statsLoaded);
+					ifsStats.close();
 
 					cout << "\n\tDone loading statistics\n\n";
 				}
 				else
 					cout << "\n\n";
 				
+				// load map if not done already
 				if (!mapLoaded) {
 					cout << "\n\tLoading map...";
 					load2DArr(map, SIZE_ROOMS, SIZE_EXITS);
@@ -129,7 +131,12 @@ void main() {
 				system("pause");
 				system("cls");
 
+				// play game
 				winner = startHunt(map, posPlayer, posWumpus, posBat1, posBat2, posPit1, posPit2, moveCounter);
+
+				// update stats
+
+
 
 				break;
 			case 4:			// EXIT
