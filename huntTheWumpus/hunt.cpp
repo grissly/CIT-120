@@ -148,7 +148,9 @@ void main() {
 				cout 
 					<< "\n\tDone Updating Statistics..."
 					<< "\n\n\tSaving Statistics in \"stats.txt\"";
+				ofsStats.open(statsFilename);
 				printStats(gamesPld, whoWon, winPct, numMvs, SIZE_STATS, ofsStats);
+				ofsStats.close();
 				cout << "\n\tDone Saving Statistics...";
 
 				break;
