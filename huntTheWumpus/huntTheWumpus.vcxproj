@@ -81,7 +81,6 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="instructions.txt" />
-    <Text Include="map.txt" />
     <Text Include="stats.txt" />
   </ItemGroup>
   <ItemGroup>

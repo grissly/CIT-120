@@ -105,12 +105,12 @@ void main() {
 				break;
 			case 2:			// Stats
 				if (!statsLoaded) {
+					cout << "\n\tLoading statistics...";
 					ifsStats.open(statsFilename);
 					if (!ifsStats.fail()) {
-						cout << "\n\tLoading statistics...";
 						loadStats(gamesPld, whoWon, winPct, numMvs, SIZE_STATS, ifsStats, statsLoaded);
-						cout << "\n\tDone loading statistics";
 						ifsStats.close();
+						cout << "\n\tDone loading statistics";
 
 						printStats(gamesPld, whoWon, winPct, numMvs, SIZE_STATS);
 					}
@@ -129,12 +129,12 @@ void main() {
 
 				// load stats if not done already
 				if (!statsLoaded) {
+					cout << "\n\tLoading statistics...";
 					ifsStats.open(statsFilename);
 					if (!ifsStats.fail()) {
-						cout << "\n\tLoading statistics...";
 						loadStats(gamesPld, whoWon, winPct, numMvs, SIZE_STATS, ifsStats, statsLoaded);
-						cout << "\n\tDone loading statistics";
 						ifsStats.close();
+						cout << "\n\tDone loading statistics";
 					}
 					else 
 						cout << "\n\tUnable to load stats...";
@@ -162,9 +162,13 @@ void main() {
 					<< "\n\tDone Updating Statistics..."
 					<< "\n\n\tSaving Statistics in \"stats.txt\"";
 				ofsStats.open(statsFilename);
-				printStats(gamesPld, whoWon, winPct, numMvs, SIZE_STATS, ofsStats);
-				ofsStats.close();
-				cout << "\n\tDone Saving Statistics...";
+				if (!ofsStats.fail()) {
+					printStats(gamesPld, whoWon, winPct, numMvs, SIZE_STATS, ofsStats);
+					ofsStats.close();
+					cout << "\n\tDone saving statistics";
+				}
+				else
+					cout << "\n\tUnable to save stats...";
 
 				break;
 			case 4:			// EXIT
@@ -177,4 +181,4 @@ void main() {
 			system("pause");
 			system("cls");
 		}
-}
+}     
