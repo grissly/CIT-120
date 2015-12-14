@@ -44,28 +44,6 @@ void loadStringArrayFromFile(string a[], int n, ifstream &ifs, bool &isLoaded);
 //					Sets isLoaded to true
 void loadStats(int &gamesPld, int whoWon[], double winPct[], double numMvs[], int n, ifstream &ifs, bool &isLoaded);
 
-/*
-//  Pre Condition:  ifs must be a valid open input stream
-// Post Condition:  Removes everything in ifs up to first int
-//					Returns first int from ifs
-//					Sets isLoaded to true
-int readInt(ifstream &ifs, bool &isLoaded);
-
-//  Pre Condition:  0 < n <= to the PHYSICAL size of a[]
-//					ifs must be a valid open input stream
-// Post Condition:  Removes everything in ifs up to first int
-//					Initializes first n elements of a[] to first n ints in ifs
-//					Sets isLoaded to true
-void loadIntArr(int a[], int n, ifstream &ifs, bool &isLoaded);
-
-//  Pre Condition:  0 < n <= to the PHYSICAL size of a[]
-//					ifs must be a valid open input stream
-// Post Condition:  Removes everything in ifs up to first double
-//					Initializes first n elements of a[] to first n doubles in ifs
-//					Sets isLoaded to true
-void loadDoubleArr(double a[], int n, ifstream &ifs, bool &isLoaded);
-*/
-
 //  Pre Condition:  n must be LOGICAL size of whoWon[], whoWonPercent[], AND numMoves[]
 //					os must be a valid open output stream
 // Post Condition:  Prints out a report on game statistics
