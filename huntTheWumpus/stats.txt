@@ -1,16 +1,13 @@
 
 Hunt the Wumpus Game Statistics
 
-	Games Played: 7
+	Games Played: 8
 
 	Who Won:
 	Wumpus	Pit	Player
-	2	2	3
-
-	Win Rate:
-	Wumpus	Pit	Player
-	28.6%	28.6%	42.9%
+	2	2	4
+	25.0%	25.0%	50.0%
 
 	Moves per Game:
 	Least	Most	Average
-	3	12	5.2
+	3	12	5.0
