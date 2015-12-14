@@ -93,9 +93,7 @@ void printStats(int gamesPld, const int whoWon[], const double winPct[], const d
 	for (int i = 0; i < n; i++)
 		os << "\t" << whoWon[i];
 
-	os
-		<< "\n\n\tWin Rate:"
-		<< "\n\tWumpus\tPit\tPlayer\n";
+	os << endl;
 
 	for (int i = 0; i < n; i++)
 		os << "\t" << winPct[i] << "%";
