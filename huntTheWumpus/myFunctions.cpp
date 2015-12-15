@@ -130,7 +130,7 @@ void printStats(int gamesPld, const int whoWon[], const double winPct[], const d
 		<< "\n\n\tMoves per Game:"
 		<< "\n\tLeast\tMost\tAverage\n";
 
-	for (int i = 0; i < n - 2; i++)
+	for (int i = 0; i < n - 1; i++)
 		os << "\t" << int(numMvs[i]);
 
 	os << "\t" << numMvs[n - 1];

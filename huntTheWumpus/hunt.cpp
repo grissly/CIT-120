@@ -85,7 +85,7 @@ void main() {
 		printStringArr(menuArr, SIZE_MENU);
 		cout << "\n\nPlease make a selection: ";
 
-		switch (getIntInRange(1, 4)) {
+		switch (getIntInRange(1, 5)) {
 			case VIEW_INSTRUCTIONS:
 				if (!instrLoaded)
 					connectAndLoadStringArrayFromFile(instrArray, SIZE_INSTR, ifsInstr, instrFilename, instrLoaded);
@@ -135,6 +135,10 @@ void main() {
 				cout << "\nThank you for using my program.\n\n";
 				system("pause");
 				exit(0);
+
+			case 5:
+				for (int i = 0; i < 3; i++)
+					cout << endl << numMvs[i];
 		}
 
 		cout << endl << endl;
