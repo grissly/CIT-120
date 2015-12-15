@@ -128,18 +128,7 @@ void main() {
 				winner = startHunt(map, posPlayer, posWumpus, posBat1, posBat2, posPit1, posPit2, moveCounter);
 
 				// update stats
-				cout << "\n\n\tUpdating Statistics...";
-				updateStats(gamesPld, whoWon, winPct, numMvs, SIZE_STATS, winner, moveCounter);
-				cout << "\n\tDone Updating Statistics...";
-					<< "\n\n\tSaving Statistics in \"stats.txt\"";
-				ofsStats.open(statsFilename);
-				if (!ofsStats.fail()) {
-					printStats(gamesPld, whoWon, winPct, numMvs, SIZE_STATS, ofsStats);
-					ofsStats.close();
-					cout << "\n\tDone saving statistics";
-				}
-				else
-					cout << "\n\tUnable to save stats...";
+				connectOfileAndUpdateStats(gamesPld, whoWon, winPct, numMvs, SIZE_STATS, winner, moveCounter, ofsStats, statsFilename);
 
 				break;
 			case EXIT_PROGRAM:

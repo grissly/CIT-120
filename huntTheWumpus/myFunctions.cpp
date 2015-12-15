@@ -11,13 +11,13 @@ void connectAndLoadStringArrayFromFile(string a[], int n, ifstream &ifs, string 
 	cout << "\n\tLoading " << filename << "...";
 	ifs.open(filename);
 	while (ifs.fail()) {
-		cout 
-			<< "\n\tUnable to open " << filename <<"..." << endl
+		cout
+			<< "\n\tUnable to open " << filename << "..." << endl
 			<< "Please provide a new filname: ";
 		getline(cin >> ws, filename);
 		ifs.open(filename);
 	}
-	
+
 	loadStringArrayFromFile(a, n, ifs, isLoaded);
 	ifs.close();
 	cout << "\n\tDone loading " << filename << "...";
@@ -73,7 +73,7 @@ void loadStats(int &gamesPld, int whoWon[], double winPct[], double numMvs[], in
 }
 
 void load2DArr(int map[][SIZE_EXITS], int const n, int const m) {
-	int tempMap[21][3] = {
+	int tempMap[SIZE_ROOMS][SIZE_EXITS] = {
 		{ 0, 0, 0 },		// room not actually used
 		{ 2, 4, 19 },
 		{ 1, 3, 6 },
@@ -128,10 +128,12 @@ void printStats(int gamesPld, const int whoWon[], const double winPct[], const d
 
 	os
 		<< "\n\n\tMoves per Game:"
-		<< "\n\tLeast\tMost\tAverage\n"
-		<< "\t" << int(numMvs[0])
-		<< "\t" << int(numMvs[1])
-		<< "\t" << numMvs[2];
+		<< "\n\tLeast\tMost\tAverage\n";
+
+	for (int i = 0; i < n - 2; i++)
+		os << "\t" << int(numMvs[i]);
+
+	os << "\t" << numMvs[n - 1];
 }
 
 void print2DArr(int const map[][SIZE_EXITS], int n, int m, ostream &os) {
@@ -234,8 +236,8 @@ int startHunt(int const map[][SIZE_EXITS], int player, int wumpus, int bat1, int
 			return -1;
 		}
 		else if (player == bat1 || player == bat2) {
-			cout 
-				<< "\n\n\tA Giant Bat grabs you and carries you through the caves." 
+			cout
+				<< "\n\n\tA Giant Bat grabs you and carries you through the caves."
 				<< "\n\tAfter what seems like a long time, it drops you in a new room."
 				<< "\n\tYou see the familiar features of the room you started in!";
 			encounteredHazard = true;
@@ -296,11 +298,29 @@ bool isHazardNear(int const map[][SIZE_EXITS], int p, int h) {
 	return false;
 }
 
+void connectOfileAndUpdateStats(int &gamesPld, int whoWon[], double winPct[], double numMvs[], int n, int outcome, int &counter, ofstream &ofs, string &filename) {
+	cout << "\n\n\tUpdating Statistics...";
+	updateStats(gamesPld, whoWon, winPct, numMvs, n, outcome, counter);
+	cout << "\n\tDone Updating Statistics...";
+
+	cout << "\n\n\tSaving Statistics in \"" << filename << "\"";
+	ofs.open(filename);
+	while (ofs.fail()) {
+		cout
+			<< "\n\tUnable to open " << filename << "..." << endl
+			<< "Please provide a new filname: ";
+		getline(cin >> ws, filename);
+		ofs.open(filename);
+	}
+	printStats(gamesPld, whoWon, winPct, numMvs, n, ofs);
+	cout << "\n\tDone saving statistics";
+}
+
 void updateStats(int &gamesPld, int whoWon[], double winPct[], double numMvs[], int n, int outcome, int lengthOfGame) {
-	if (gamesPld++ == 0) 
+	if (gamesPld++ == 0)
 		// if first game, no need to find shortest/longest game
 		// or avg game length
-		for (int i = 0; i < n; i++) 
+		for (int i = 0; i < n; i++)
 			numMvs[i] = lengthOfGame;
 	else {
 		if (lengthOfGame < numMvs[0])
@@ -312,9 +332,9 @@ void updateStats(int &gamesPld, int whoWon[], double winPct[], double numMvs[], 
 		// newAvg = (oldAvg * prevTotalGamesPld + lengthOfMostRecentGame) / newTotalGamesPld
 		numMvs[2] = (numMvs[2] * double(gamesPld - 1) + double(lengthOfGame)) / double(gamesPld);
 	}
-	
+
 	// outcome is the winner code and will increment the int representing the entity that won the last game
-	whoWon[outcome + 1]++; 
+	whoWon[outcome + 1]++;
 
 	for (int i = 0; i < n; i++)
 		winPct[i] = whoWon[i] / double(gamesPld) * 100;
