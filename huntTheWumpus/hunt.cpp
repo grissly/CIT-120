@@ -58,127 +58,98 @@ void main() {
 		"\t\t          by J. Guerra          ",
 		"\t\t        Hunt the Wumpus!        ",
 		"\t\tOriginally by Gregory Yob (1973)"
-	},
+		},
 
-	menuArr[SIZE_MENU] = {
+		menuArr[SIZE_MENU] = {
 			"\t1] View Instructions",
 			"\t2] View Statistics",
 			"\t3] Play Game",
 			"\t4] Exit Program"
 		};
 
-		ifstream
-			ifsInstr,
-			ifsStats;
+	ifstream
+		ifsInstr,
+		ifsStats;
 
-		ofstream
-			ofsStats;
+	ofstream
+		ofsStats;
 
-		system("color 2f");		// set console color: 2 (green background), f (white text)
+	system("color 2f");		// set console color: 2 (green background), f (white text)
 
-		// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ //
+	// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ //
 
-		while (true) {
-			printStringArr(titleArr, SIZE_TITLE);
+	while (true) {
+		printStringArr(titleArr, SIZE_TITLE);
 
-			cout << endl << endl;
-			printStringArr(menuArr, SIZE_MENU);
-			cout << "\n\nPlease make a selection: ";
+		cout << endl << endl;
+		printStringArr(menuArr, SIZE_MENU);
+		cout << "\n\nPlease make a selection: ";
 
-			switch (getIntInRange(1, 4)) {
-				case 1:			// View Instructions
-					if (!instrLoaded) {
-						ifsInstr.open(instrFilename);
-						if (!ifsInstr.fail()) {
-							loadStringArrayFromFile(instrArray, SIZE_INSTR, ifsInstr, instrLoaded);
-							ifsInstr.close();
-
-							system("cls");
-							printStringArr(instrArray, SIZE_INSTR);
-						}
-						else
-							cout << "\n\tUnable to load instructions...";
-					}
-					else
-						printStringArr(instrArray, SIZE_INSTR);
-
-					break;
-				case 2:			// View Stats
-					if (!statsLoaded) {
-						cout << "\n\tLoading statistics...";
-						ifsStats.open(statsFilename);
-						if (!ifsStats.fail()) {
-							loadStats(gamesPld, whoWon, winPct, numMvs, SIZE_STATS, ifsStats, statsLoaded);
-							ifsStats.close();
-							cout << "\n\tDone loading statistics";
-
-							printStats(gamesPld, whoWon, winPct, numMvs, SIZE_STATS);
-						}
-						else
-							cout << "\n\tUnable to load stats...";
-					}
-					else
-						printStats(gamesPld, whoWon, winPct, numMvs, SIZE_STATS);
-
-					break;
-				case 3:			// Play Game
-					cout
-						<< "\n\tPlease finish each game."
-						<< "\n\tStatistics will be automatically updated after each game."
-						<< "\n\tYou may view statistics in main menu or in \"stats.txt\"";
-
-					// load stats if not done already
-					if (!statsLoaded) {
-						cout << "\n\tLoading statistics...";
-						ifsStats.open(statsFilename);
-						if (!ifsStats.fail()) {
-							loadStats(gamesPld, whoWon, winPct, numMvs, SIZE_STATS, ifsStats, statsLoaded);
-							ifsStats.close();
-							cout << "\n\tDone loading statistics";
-						}
-						else
-							cout << "\n\tUnable to load stats...";
-					}
-
-					cout << "\n\n";
-
-					// load map if not done already
-					if (!mapLoaded) {
-						cout << "\tLoading map...";
-						load2DArr(map, SIZE_ROOMS, SIZE_EXITS);
-						cout << "\n\tDone loading map\n\n";
-					}
-
-					system("pause");
+		switch (getIntInRange(1, 4)) {
+			case VIEW_INSTRUCTIONS:
+				if (!instrLoaded)
+					connectAndLoadStringArrayFromFile(instrArray, SIZE_INSTR, ifsInstr, instrFilename, instrLoaded);
+				if (instrLoaded) {
 					system("cls");
+					printStringArr(instrArray, SIZE_INSTR);
+				}
+				break;
+			case VIEW_STATISTICS:
+				if (!statsLoaded) 
+					connectAndLoadStatsFromFile(gamesPld, whoWon, winPct, numMvs, SIZE_STATS, ifsStats, statsFilename, statsLoaded);
+				if (statsLoaded) {
+					cout << endl << endl;
+					printStats(gamesPld, whoWon, winPct, numMvs, SIZE_STATS);
+				}
+				break;
 
-					// game
-					winner = startHunt(map, posPlayer, posWumpus, posBat1, posBat2, posPit1, posPit2, moveCounter);
+			case PLAY_GAME:
+				cout
+					<< "\n\tPlease finish each game."
+					<< "\n\tStatistics will be automatically updated after each game."
+					<< "\n\tYou may view statistics in main menu or in \"stats.txt\"";
 
-					// update stats
-					cout << "\n\n\tUpdating Statistics...";
-					updateStats(gamesPld, whoWon, winPct, numMvs, SIZE_STATS, winner, moveCounter);
-					cout
-						<< "\n\tDone Updating Statistics..."
-						<< "\n\n\tSaving Statistics in \"stats.txt\"";
-					ofsStats.open(statsFilename);
-					if (!ofsStats.fail()) {
-						printStats(gamesPld, whoWon, winPct, numMvs, SIZE_STATS, ofsStats);
-						ofsStats.close();
-						cout << "\n\tDone saving statistics";
-					}
-					else
-						cout << "\n\tUnable to save stats...";
+				// load stats if not done already
+				if (!statsLoaded)
+					connectAndLoadStatsFromFile(gamesPld, whoWon, winPct, numMvs, SIZE_STATS, ifsStats, statsFilename, statsLoaded);
+				cout << "\n\n";
 
-					break;
-				case 4:			// EXIT
-					cout << "\nThank you for using my program.\n\n";
-					system("pause");
-					exit(0);
-			}
+				// load map if not done already
+				if (!mapLoaded) {
+					cout << "\tLoading map...";
+					load2DArr(map, SIZE_ROOMS, SIZE_EXITS);
+					cout << "\n\tDone loading map\n\n";
+				}
 
-			cout << endl << endl;
-			system("pause");
-			system("cls");
+				system("pause");
+				system("cls");
+
+				// game
+				winner = startHunt(map, posPlayer, posWumpus, posBat1, posBat2, posPit1, posPit2, moveCounter);
+
+				// update stats
+				cout << "\n\n\tUpdating Statistics...";
+				updateStats(gamesPld, whoWon, winPct, numMvs, SIZE_STATS, winner, moveCounter);
+				cout << "\n\tDone Updating Statistics...";
+					<< "\n\n\tSaving Statistics in \"stats.txt\"";
+				ofsStats.open(statsFilename);
+				if (!ofsStats.fail()) {
+					printStats(gamesPld, whoWon, winPct, numMvs, SIZE_STATS, ofsStats);
+					ofsStats.close();
+					cout << "\n\tDone saving statistics";
+				}
+				else
+					cout << "\n\tUnable to save stats...";
+
+				break;
+			case EXIT_PROGRAM:
+				cout << "\nThank you for using my program.\n\n";
+				system("pause");
+				exit(0);
 		}
+
+		cout << endl << endl;
+		system("pause");
+		system("cls");
+	}
 }

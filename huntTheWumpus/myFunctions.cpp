@@ -5,10 +5,153 @@
 #include <iomanip>
 using namespace std;
 
+// ~ ~ ~ ~ ~ ~ ~ ~			loading				~ ~ ~ ~ ~ ~ ~ ~ //
+
+void connectAndLoadStringArrayFromFile(string a[], int n, ifstream &ifs, string &filename, bool &isLoaded) {
+	cout << "\n\tLoading " << filename << "...";
+	ifs.open(filename);
+	while (ifs.fail()) {
+		cout 
+			<< "\n\tUnable to open " << filename <<"..." << endl
+			<< "Please provide a new filname: ";
+		getline(cin >> ws, filename);
+		ifs.open(filename);
+	}
+	
+	loadStringArrayFromFile(a, n, ifs, isLoaded);
+	ifs.close();
+	cout << "\n\tDone loading " << filename << "...";
+}
+
+void loadStringArrayFromFile(string a[], int n, ifstream &ifs, bool &isLoaded) {
+	for (int i = 0; i < n; i++)
+		getline(ifs, a[i]);
+
+	isLoaded = true;
+}
+
+void connectAndLoadStatsFromFile(int &gamesPld, int whoWon[], double winPct[], double numMvs[], int n, ifstream &ifs, string &filename, bool &isLoaded) {
+	cout << "\n\tLoading " << filename << "...";
+	ifs.open(filename);
+	while (ifs.fail()) {
+		cout
+			<< "\n\tUnable to open " << filename << "..." << endl
+			<< "Please provide a new filname: ";
+		getline(cin >> ws, filename);
+		ifs.open(filename);
+	}
+
+	loadStats(gamesPld, whoWon, winPct, numMvs, n, ifs, isLoaded);
+	ifs.close();
+	cout << "\n\tDone loading " << filename << "...";
+}
+
+void loadStats(int &gamesPld, int whoWon[], double winPct[], double numMvs[], int n, ifstream &ifs, bool &isLoaded) {
+
+	while (ifs.peek() < '0' || ifs.peek() > '9')
+		ifs.ignore();
+	ifs >> gamesPld;
+
+	while (ifs.peek() < '0' || ifs.peek() > '9')
+		ifs.ignore();
+	for (int i = 0; i < n; i++)
+		ifs >> whoWon[i];
+
+	while (ifs.peek() < '0' || ifs.peek() > '9')
+		ifs.ignore();
+	for (int i = 0; i < n; i++) {
+		ifs >> winPct[i];
+		ifs.ignore();	// for discarding '%'
+	}
+
+	while (ifs.peek() < '0' || ifs.peek() > '9')
+		ifs.ignore();
+	for (int i = 0; i < n; i++)
+		ifs >> numMvs[i];
+
+	isLoaded = true;
+}
+
+void load2DArr(int map[][SIZE_EXITS], int const n, int const m) {
+	int tempMap[21][3] = {
+		{ 0, 0, 0 },		// room not actually used
+		{ 2, 4, 19 },
+		{ 1, 3, 6 },
+		{ 2, 8, 20 },
+		{ 1, 5, 9 },
+		{ 4, 6, 11 },
+		{ 2, 5, 7 },
+		{ 6, 8, 12 },
+		{ 3, 7, 13 },
+		{ 4, 10, 16 },
+		{ 9, 11, 14 },
+		{ 5, 10, 12 },
+		{ 7, 11, 15 },
+		{ 8, 15, 18 },
+		{ 10, 15, 17 },
+		{ 12, 13, 14 },
+		{ 9, 17, 19 },
+		{ 14, 16, 18 },
+		{ 13, 17, 20 },
+		{ 1, 16, 20 },
+		{ 3, 18, 19 }
+	};
+
+	for (int i = 0; i < n; i++)
+		for (int j = 0; j < m; j++)
+			map[i][j] = tempMap[i][j];
+}
+
+// ~ ~ ~ ~ ~ ~ ~ ~			printing			~ ~ ~ ~ ~ ~ ~ ~ //
+
 void printStringArr(const string a[], int n, ostream &os) {
 	for (int i = 0; i < n; i++)
 		os << "\n" << a[i];
 }
+
+void printStats(int gamesPld, const int whoWon[], const double winPct[], const double numMvs[], int n, ostream &os) {
+
+	os
+		<< fixed << setprecision(1)
+		<< "\nHunt the Wumpus Game Statistics"
+		<< "\n\n\tGames Played: " << gamesPld
+		<< "\n\n\tWho Won:"
+		<< "\n\tWumpus\tPit\tPlayer\n";
+
+	for (int i = 0; i < n; i++)
+		os << "\t" << whoWon[i];
+
+	os << endl;
+
+	for (int i = 0; i < n; i++)
+		os << "\t" << winPct[i] << "%";
+
+	os
+		<< "\n\n\tMoves per Game:"
+		<< "\n\tLeast\tMost\tAverage\n"
+		<< "\t" << int(numMvs[0])
+		<< "\t" << int(numMvs[1])
+		<< "\t" << numMvs[2];
+}
+
+void print2DArr(int const map[][SIZE_EXITS], int n, int m, ostream &os) {
+	cout << "\n";
+	for (int i = 0; i < n; i++)
+		for (int j = 0; j < m; j++)
+			cout << "\t" << map[i][j] << (j % m == m - 1 ? "\n" : ", ");
+}
+
+void printRoomAndExits(int const map[][SIZE_EXITS], int p) {
+	cout
+		<< "\tYou are in room " << p << endl
+		<< "\tYou may go to rooms:" << endl;
+
+	for (int i = 0; i < SIZE_EXITS; i++) {
+		cout << "\t" << map[p][i];
+	}
+}
+
+// ~ ~ ~ ~ ~ ~ ~ ~			validating			~ ~ ~ ~ ~ ~ ~ ~ //
 
 int getIntInRange(int start, int end) {
 	int x = getInt();
@@ -48,100 +191,33 @@ double getNum() {
 	return x;
 }
 
-void loadStringArrayFromFile(string a[], int n, ifstream &ifs, bool &isLoaded) {
-	for (int i = 0; i < n; i++)
-		getline(ifs, a[i]);
+char getMorS() {
+	char c;
 
-	isLoaded = true;
-}
+	cin >> c;	cin.ignore(80, '\n');
 
-void loadStats(int &gamesPld, int whoWon[], double winPct[], double numMvs[], int n, ifstream &ifs, bool &isLoaded) {
-
-	while (ifs.peek() < '0' || ifs.peek() > '9')
-		ifs.ignore();
-	ifs >> gamesPld;
-
-	while (ifs.peek() < '0' || ifs.peek() > '9')
-		ifs.ignore();
-	for (int i = 0; i < n; i++)
-		ifs >> whoWon[i];
-
-	while (ifs.peek() < '0' || ifs.peek() > '9')
-		ifs.ignore();
-	for (int i = 0; i < n; i++) {
-		ifs >> winPct[i];
-		ifs.ignore();	// for discarding '%'
+	while (c != 'M' && c != 'm' && c != 'S' && c != 's') {
+		cout << "\tPlease type 'M' for move or 'S' for shoot: ";
+		cin >> c;		cin.ignore(80, '\n');
 	}
 
-	while (ifs.peek() < '0' || ifs.peek() > '9')
-		ifs.ignore();
-	for (int i = 0; i < n; i++)
-		ifs >> numMvs[i];
-
-	isLoaded = true;
+	return (c == 'm' ? 'M' : c == 's' ? 'S' : c);	// returns only capitals
 }
 
-void printStats(int gamesPld, const int whoWon[], const double winPct[], const double numMvs[], int n, ostream &os) {
+int getValidExit(int const map[][SIZE_EXITS], int p) {
+	int t = getInt();
 
-	os
-		<< fixed << setprecision(1)
-		<< "\nHunt the Wumpus Game Statistics"
-		<< "\n\n\tGames Played: " << gamesPld
-		<< "\n\n\tWho Won:"
-		<< "\n\tWumpus\tPit\tPlayer\n";
+	while (t != map[p][0] && t != map[p][1] && t != map[p][2]) {
+		cout
+			<< "\n\tYou " << (t == p ? "are already t" : "can't go there from ")
+			<< "here. Try again: ";
+		t = getInt();
+	}
 
-	for (int i = 0; i < n; i++)
-		os << "\t" << whoWon[i];
-
-	os << endl;
-
-	for (int i = 0; i < n; i++)
-		os << "\t" << winPct[i] << "%";
-
-	os
-		<< "\n\n\tMoves per Game:"
-		<< "\n\tLeast\tMost\tAverage\n"
-		<< "\t" << int(numMvs[0])
-		<< "\t" << int(numMvs[1])
-		<< "\t" << numMvs[2];
+	return t;
 }
 
-void load2DArr(int map[][SIZE_EXITS], int const n, int const m) {
-	int tempMap[21][3] = {
-		{ 0, 0, 0 },		// room not actually used
-		{ 2, 4, 19 },
-		{ 1, 3, 6 },
-		{ 2, 8, 20 },
-		{ 1, 5, 9 },
-		{ 4, 6, 11 },
-		{ 2, 5, 7 },
-		{ 6, 8, 12 },
-		{ 3, 7, 13 },
-		{ 4, 10, 16 },
-		{ 9, 11, 14 },
-		{ 5, 10, 12 },
-		{ 7, 11, 15 },
-		{ 8, 15, 18 },
-		{ 10, 15, 17 },
-		{ 12, 13, 14 },
-		{ 9, 17, 19 },
-		{ 14, 16, 18 },
-		{ 13, 17, 20 },
-		{ 1, 16, 20 },
-		{ 3, 18, 19 }
-	};
-
-	for (int i = 0; i < n; i++)
-		for (int j = 0; j < m; j++)
-			map[i][j] = tempMap[i][j];
-}
-
-void print2DArr(int const map[][SIZE_EXITS], int n, int m, ostream &os) {
-	cout << "\n";
-	for (int i = 0; i < n; i++)
-		for (int j = 0; j < m; j++)
-			cout << "\t" << map[i][j] << (j % m == m - 1 ? "\n" : ", ");
-}
+// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ //
 
 int startHunt(int const map[][SIZE_EXITS], int player, int wumpus, int bat1, int bat2, int pit1, int pit2, int &count) {
 	count = 0;
@@ -220,42 +296,6 @@ bool isHazardNear(int const map[][SIZE_EXITS], int p, int h) {
 	return false;
 }
 
-void printRoomAndExits(int const map[][SIZE_EXITS], int p) {
-	cout
-		<< "\tYou are in room " << p << endl
-		<< "\tYou may go to rooms:" << endl;
-
-	for (int i = 0; i < SIZE_EXITS; i++) {
-		cout << "\t" << map[p][i];
-	}
-}
-
-char getMorS() {
-	char c;
-
-	cin >> c;	cin.ignore(80, '\n');
-
-	while (c != 'M' && c != 'm' && c != 'S' && c != 's') {
-		cout << "\tPlease type 'M' for move or 'S' for shoot: ";
-		cin >> c;		cin.ignore(80, '\n');
-	}
-
-	return (c == 'm' ? 'M' : c == 's' ? 'S' : c);	// returns only capitals
-}
-
-int getValidExit(int const map[][SIZE_EXITS], int p) {
-	int t = getInt();
-
-	while (t != map[p][0] && t != map[p][1] && t != map[p][2]) {
-		cout
-			<< "\n\tYou " << (t == p ? "are already t" : "can't go there from ")
-			<< "here. Try again: ";
-		t = getInt();
-	}
-
-	return t;
-}
-
 void updateStats(int &gamesPld, int whoWon[], double winPct[], double numMvs[], int n, int outcome, int lengthOfGame) {
 	if (gamesPld++ == 0) 
 		// if first game, no need to find shortest/longest game
@@ -279,3 +319,5 @@ void updateStats(int &gamesPld, int whoWon[], double winPct[], double numMvs[], 
 	for (int i = 0; i < n; i++)
 		winPct[i] = whoWon[i] / double(gamesPld) * 100;
 }
+
+
