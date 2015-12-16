@@ -313,6 +313,7 @@ void connectOfileAndUpdateStats(int &gamesPld, int whoWon[], double winPct[], do
 		ofs.open(filename);
 	}
 	printStats(gamesPld, whoWon, winPct, numMvs, n, ofs);
+	ofs.close();
 	cout << "\n\tDone saving statistics";
 }
 

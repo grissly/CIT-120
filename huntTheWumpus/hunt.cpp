@@ -137,8 +137,15 @@ void main() {
 				exit(0);
 
 			case 5:
+
 				for (int i = 0; i < 3; i++)
-					cout << endl << numMvs[i];
+					cout << "\t" << whoWon[i];
+				cout << endl;
+				for (int i = 0; i < 3; i++)
+					cout << "\t" << winPct[i];
+				cout << endl;
+				for (int i = 0; i < 3; i++)
+					cout << "\t" << numMvs[i];
 		}
 
 		cout << endl << endl;
