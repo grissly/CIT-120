@@ -35,10 +35,9 @@ void main() {
 	}
 	
 	file >> a >> b;
-	
-	cout << "The average of " << a << " and " << b << " is: " << (a + b) / 2.0 << ".\n\n";
-	
 	file.close();
 
+	cout << "The average of " << a << " and " << b << " is: " << (a + b) / 2.0 << ".\n\n";
+	
 	system("pause");
 }
